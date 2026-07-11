@@ -1,7 +1,6 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ParticleHero from '../components/ParticleHero.astro';
-import BentoGrid from '../components/BentoGrid.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import TopicCard from '../components/TopicCard.astro';
 import ArticleCard from '../components/ArticleCard.astro';
@@ -9,6 +8,10 @@ import LabCard from '../components/LabCard.astro';
 import { topics } from '../data/topics';
 import { labProjects } from '../data/lab';
 import { profile } from '../data/profile';
+
+const selectedPosts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
 
 const personJsonLd = {
   '@context': 'https://schema.org',
@@ -21,59 +24,71 @@ const personJsonLd = {
 ---
 
 <BaseLayout title="Kzyo" description="Kzyo 的个人网站：营销增长、因果推断、Uplift Modeling 与 AI 应用。" jsonLd={personJsonLd}>
-  <ParticleHero />
-
-  <section id="workbench" class="section-shell">
-    <SectionHeading number="01" title="我正在研究的增量问题" description="从模型预测走向可验证的干预效果，连接实验、算法与真实决策。" />
-    <BentoGrid>
-      {topics.map((topic, index) => <TopicCard {topic} featured={index === 0} />)}
-    </BentoGrid>
+  <section class="home-intro shell" data-home-intro>
+    <p class="eyebrow">Kzyo · Growth / Causal / AI</p>
+    <h1>{profile.statement}</h1>
+    <p class="home-intro__summary">{profile.summary}</p>
+    <nav aria-label="首页快捷入口">
+      <a href="/writing/">阅读文章</a>
+      <a href="/about/">关于 Kzyo</a>
+    </nav>
   </section>
 
   <section class="section-shell">
-    <SectionHeading number="02" title="写作与研究档案" description="把方法、判断与实验过程整理成可以回看的公开材料。" />
-    <BentoGrid>
-      <ArticleCard
-        span="wide"
-        eyebrow="Writing Archive"
-        title="从 142 篇旧文里，重新整理长期有效的知识"
-        description="旧站文章完整保留在历史归档；新站会把因果推断、算法实践和阅读思考重新组织成更清晰的路径。"
-        href="/writing/"
-        meta="文章与历史归档"
-      />
-      <ArticleCard
-        title="时间序列、深度学习与室内定位"
-        description="博士阶段的论文与研究资料，构成我理解模型评估和工程问题的另一条线索。"
-        href="/research/"
-        eyebrow="Research"
-        meta="3 篇公开论文 · 博士论文"
-      />
-    </BentoGrid>
+    <SectionHeading number="01" title="增长与因果" description="从预测走向可验证的增量效果，把模型、实验和营销决策连接起来。" />
+    <div>{topics.map((topic) => <TopicCard {topic} />)}</div>
   </section>
 
   <section class="section-shell">
-    <SectionHeading number="03" title="AI 实验室" description="把 AI 当作新的创作与生产媒介，持续验证内容、知识和个人效率工具。" />
-    <BentoGrid>
-      {labProjects.map((project, index) => <LabCard {project} {index} />)}
-    </BentoGrid>
-    <div class="home-more"><a class="button button--ghost" href="/lab/">查看全部实验 <span aria-hidden="true">↗</span></a></div>
+    <SectionHeading number="02" title="最近写作" description="文章、研究笔记与未来的播客内容使用同一套内容索引。" />
+    <div>
+      {selectedPosts.map((post) => (
+        <ArticleCard
+          eyebrow={post.data.category}
+          title={post.data.title}
+          description={post.data.description}
+          href={post.data.permalink}
+          meta={post.data.pubDate.toLocaleDateString('zh-CN')}
+        />
+      ))}
+    </div>
+    <p class="section-more"><a href="/writing/">查看全部文章 →</a></p>
   </section>
 
-  <section class="home-closing shell">
-    <span>Now / 2026</span>
-    <p>在智能营销里研究真正的增量，也在工作之外用 AI 做内容、工具和新的表达。</p>
-    <a href="/about/">更多关于我 <span aria-hidden="true">→</span></a>
+  <section class="section-shell">
+    <SectionHeading number="03" title="AI 项目" description="围绕内容、知识和个人工作流，持续构建可以被验证的工具与原型。" />
+    <div>{labProjects.map((project, index) => <LabCard {project} {index} />)}</div>
+    <p class="section-more"><a href="/lab/">查看 AI 实验室 →</a></p>
+  </section>
+
+  <section class="section-shell">
+    <SectionHeading number="04" title="研究资料" description="博士研究与公开论文是方法训练的背景，也是理解模型边界的证据。" />
+    <article class="research-row" data-editorial-row>
+      <span>Research</span>
+      <div><h3><a href="/research/">论文、博士研究与公开资料</a></h3><p>论文记录保留规范作者信息，站内其他区域统一使用 Kzyo。</p></div>
+      <a href="/research/" aria-label="查看研究资料">↗</a>
+    </article>
   </section>
 </BaseLayout>
 
 <style>
-  .home-more { display: flex; justify-content: flex-end; margin-top: 1.25rem; }
-  .home-closing { display: grid; grid-template-columns: 7rem minmax(0, 1fr) auto; align-items: start; gap: clamp(1.5rem, 5vw, 5rem); margin-bottom: var(--section-space); padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--gradient-accent); border-radius: var(--radius-card); color: var(--color-bg-deep); }
-  .home-closing > span { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
-  .home-closing p { max-width: 40rem; margin: 0; font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.25; }
-  .home-closing a { color: var(--color-bg-deep); font-size: 0.78rem; font-weight: 800; text-decoration: none; white-space: nowrap; }
-  @media (max-width: 44rem) {
-    .home-more { justify-content: flex-start; }
-    .home-closing { grid-template-columns: 1fr; }
+  .home-intro { display: grid; align-content: center; min-height: min(62vh, 38rem); padding-block: clamp(5rem, 11vw, 8rem); border-bottom: 1px solid var(--color-border); }
+  .home-intro h1 { max-width: 16ch; margin-bottom: 1.25rem; font-size: clamp(3.2rem, 7vw, 4.5rem); }
+  .home-intro__summary { max-width: 42rem; margin-bottom: 1.5rem; color: var(--color-muted); font-size: clamp(1.02rem, 1.6vw, 1.18rem); }
+  .home-intro nav { display: flex; flex-wrap: wrap; gap: 0.75rem 1.4rem; }
+  .home-intro nav a, .section-more a { font-size: 0.84rem; font-weight: 600; }
+  .section-more { margin: 1.25rem 0 0; text-align: right; }
+  .research-row { display: grid; grid-template-columns: 8rem minmax(0, 1fr) auto; gap: clamp(1rem, 4vw, 2.5rem); padding-block: 1.4rem; border-block: 1px solid var(--color-border); }
+  .research-row > span { color: var(--color-subtle); font-family: var(--font-latin); font-size: 0.7rem; text-transform: uppercase; }
+  .research-row h3 { margin: 0 0 0.3rem; font-size: clamp(1.2rem, 2vw, 1.48rem); }
+  .research-row h3 a, .research-row > a { text-decoration: none; }
+  .research-row p { margin: 0; color: var(--color-muted); font-size: 0.92rem; }
+  .research-row > a { color: var(--color-subtle); }
+  @media (max-width: 42rem) {
+    .home-intro { min-height: auto; }
+    .home-intro h1 { font-size: clamp(2.7rem, 14vw, 3.7rem); }
+    .section-more { text-align: left; }
+    .research-row { grid-template-columns: 1fr auto; }
+    .research-row > span { grid-column: 1 / -1; }
   }
 </style>
