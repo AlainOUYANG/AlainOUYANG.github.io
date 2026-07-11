@@ -13,4 +13,7 @@ assert.doesNotMatch(html, /data-particle-hero|<canvas|bento-grid|profile\.png|ä½
 
 const globalCss = await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 assert.match(globalCss, /prefers-reduced-motion/);
+
+const homeSource = await readFile(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
+assert.match(homeSource, /clamp\(2\.7rem,\s*13vw,\s*3\.25rem\)/);
 console.log('build contract: PASS');

@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "prebuild": "npm run build:font-ui",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build:font-ui": "node scripts/build-ui-font.mjs",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "verify": "node scripts/verify-build.mjs",
     "verify:content": "node scripts/verify-content.mjs",
