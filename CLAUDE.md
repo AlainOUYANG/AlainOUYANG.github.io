@@ -4,9 +4,9 @@ This file defines the working rules and architecture context for this repository
 
 ## Project Status
 
-The production site at <https://alainouyang.github.io> is currently a Jekyll site based on the legacy AcademicPages / Minimal Mistakes template.
+The production site at <https://alainouyang.github.io> is an Astro 7 static site built from `site/` and deployed by `.github/workflows/deploy.yml` through GitHub Actions.
 
-The Astro rebuild is implemented and locally verified in `site/`. It is not yet the production source. Until the user separately approves the GitHub Pages publishing-source switch, the Jekyll site remains the production source of truth.
+The legacy Jekyll / AcademicPages source remains in the repository as a rollback reference. It is no longer the GitHub Pages production source and must not be deleted without separate user approval.
 
 Progress and verification status are tracked in `ROADMAP.md`. The approved redesign is specified in `docs/superpowers/specs/2026-07-10-personal-site-astro-redesign-design.md`.
 
@@ -21,7 +21,7 @@ The redesigned site is a Chinese-first professional personal site for industry p
 - Company work may be described only at the role and professional-domain level. Do not publish company cases, business details, metrics, or internal methods.
 - English content is limited to the profile summary, CV, and publications/research where useful.
 
-## Current Jekyll Architecture
+## Legacy Jekyll Architecture
 
 The current content is stored in Jekyll collections and pages:
 
@@ -58,7 +58,7 @@ npm run preview
 
 ## Approved Astro Target
 
-The target site is a static Astro 7 site intended for GitHub Pages deployment after separate CI/CD authorization.
+The production site is a static Astro 7 site deployed to GitHub Pages through the authorized GitHub Actions workflow.
 
 Planned content boundaries:
 
