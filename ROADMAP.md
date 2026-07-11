@@ -2,7 +2,7 @@
 
 ## 当前阶段
 
-Astro 7 个人网站已正式发布到 GitHub Pages。以 `Kzyo` 为公开身份的暖白编辑型极简改版已在开发分支完成代码实现、自动化验证与浏览器／Lighthouse 复验；除 Lighthouse Performance 因自托管文楷维持在 68（已确认接受）外，其余验收全部通过。线上仍运行上一版深色站点，合并与发布待用户确认。
+以 `Kzyo` 为公开身份的暖白编辑型极简改版已合并到 `master` 并部署到 GitHub Pages，线上正式生效。除 Lighthouse Performance 因自托管文楷维持在 68（已确认接受）外，其余验收全部通过。旧 Jekyll 源暂不删除，作为回滚参考。
 
 ## 已完成
 
@@ -38,6 +38,7 @@ Astro 7 个人网站已正式发布到 GitHub Pages。以 `Kzyo` 为公开身份
 - 2026-07-11：修正移动端首页标题上限和低对比度辅助文字，加入对应的构建与设计系统回归契约。
 - 2026-07-11：在最终字体分层版本上完成 Playwright 桌面／移动复验与 Lighthouse 复验；Accessibility、Best Practices、SEO 三项达到 100，Performance 维持 68。
 - 2026-07-11：用户确认接受 Performance 68，保留已批准的自托管文楷字体策略，不为 Lighthouse 分数缩减文楷使用范围。
+- 2026-07-11：将 `codex/kzyo-editorial-redesign` fast-forward 合并到 `master` 并推送，Actions 运行 `29154376007` 的 build 与 deploy job 均成功，Kzyo 暖白编辑型版本正式上线。
 
 ## 进行中
 
@@ -45,14 +46,12 @@ Astro 7 个人网站已正式发布到 GitHub Pages。以 `Kzyo` 为公开身份
 
 ## 待办
 
-1. 用户确认后，再合并、推送并发布暖白编辑型版本。
-2. 持续整理因果推断、Uplift Modeling 与智能营销的精选文章。
-3. 为 AI 实验室补充可公开的项目链接和过程记录。
-4. Astro 生产站稳定运行一段时间且用户再次确认后，再决定是否删除旧 Jekyll 文件。
+1. 持续整理因果推断、Uplift Modeling 与智能营销的精选文章。
+2. 为 AI 实验室补充可公开的项目链接和过程记录。
+3. Astro 生产站稳定运行一段时间且用户再次确认后，再决定是否删除旧 Jekyll 文件。
 
 ## 阻塞与待确认
 
-- Kzyo 编辑型极简改版尚未合并、推送或发布，生产环境仍为上一版深色站点。
 - Lighthouse Performance 维持 68：实测本地 FCP/LCP 约 82ms，模拟移动 4G 下受首屏约 667KB 中文文楷分片影响投影到约 5.1s；用户已确认接受此取舍，字体方案保持不变。
 - 新站只使用已确认的职业领域与博士背景，没有公开当前雇主、地点、邮箱、公司案例、业务数据或内部指标。
 - 用户已确认公开 GitHub、Google Scholar、LinkedIn 和 ORCID；当前雇主、地点和邮箱保持不发布。
@@ -74,3 +73,4 @@ Astro 7 个人网站已正式发布到 GitHub Pages。以 `Kzyo` 为公开身份
 - 2026-07-11：字体生产构建自动生成 16 个 UI Unicode 分片，覆盖当前第一方界面的 415 个非基础字符；生成样式为 26,492 bytes。
 - 2026-07-11：最终字体分层版本的 Playwright 复验（系统 Chrome，1440×900 与 390×844）覆盖首页、专题、文章、AI 实验室、研究、关于、归档及一篇代表性历史文章：横向溢出全为 0，控制台 0 error／0 warning，字体请求全部来自本地站点无第三方域名，首页无 canvas、计算字体族同时含 Source Sans 3 与 LXGW WenKai，移动导航可展开，标题桌面 72px／移动 50.7px；文章详情按需加载完整文楷。
 - 2026-07-11：最终 Lighthouse（首页，移动模拟）为 Accessibility 100、Best Practices 100、SEO 100、Performance 68；对比度修正使 Accessibility 从 95 升至 100。Performance 68 的根因是首屏加载约 667KB、14 个中文文楷分片：实测本地 FCP/LCP 约 82ms，模拟移动 4G 投影到约 5.1s。用户已确认接受，保留文楷字体策略。
+- 2026-07-11：上线后线上验收——首页显示 `Kzyo` 身份与新版首屏文案；首页、专题、文章、AI 实验室、研究、关于、归档、RSS、sitemap 均返回 HTTP 200；不存在路径返回自定义 HTTP 404。
