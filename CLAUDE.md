@@ -86,7 +86,9 @@ Content priority:
 - 25% AI applications and productivity tools.
 - 15% academic research and historical background.
 
-The homepage uses the approved warm personal-studio visual language with a Bento workspace layout. The largest card is reserved for causal inference and Uplift Modeling. Mobile layouts reflow into a natural single-column reading order.
+The whole Astro site uses one visual system: deep plum-black backgrounds, warm ivory text, coral-to-violet accents, numbered sections, thin rules, rounded editorial cards, and restrained reveal motion. The homepage adds an immersive particle/typewriter hero and a richer Bento workspace; subpages reuse the same tokens, header, page intro, section heading, card, and footer components. The largest homepage card is reserved for causal inference and Uplift Modeling. Mobile layouts reflow into a natural single-column reading order.
+
+The reference site at `https://zhangtenggan.cn/` informs the narrative rhythm, anchor navigation, numbered sections, and immersive hero only. Do not copy its wording, assets, particle pattern, exact colors, typography, or spacing.
 
 ## Migration Rules
 
