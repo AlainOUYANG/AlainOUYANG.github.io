@@ -7,8 +7,16 @@ for (const file of ['BaseLayout.astro', 'SiteHeader.astro', 'SiteFooter.astro', 
 }
 
 const tokens = await readFile(new URL('../src/styles/tokens.css', import.meta.url), 'utf8');
-for (const token of ['--color-bg', '--color-surface', '--color-text', '--color-accent', '--radius-card', '--content-width']) {
+for (const token of ['--color-bg', '--color-surface', '--color-text', '--color-accent', '--content-width', '--reading-width']) {
   assert.match(tokens, new RegExp(token));
 }
+assert.match(tokens, /color-scheme:\s*light/);
+assert.match(tokens, /--font-latin:\s*"Source Sans 3 Variable"/);
+assert.match(tokens, /--font-cjk:\s*"LXGW WenKai"/);
+assert.doesNotMatch(tokens, /gradient-accent|accent-violet|shadow-card/);
+
+const globalCss = await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8');
+assert.match(globalCss, /font-synthesis:\s*none/);
+assert.doesNotMatch(globalCss, /radial-gradient|fractalNoise/);
 
 console.log('design system contract: PASS');
