@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+
+.env*
+!.env.example
+
+.DS_Store
+.idea/
+.vscode/
+
+playwright-report/
+test-results/
+
+.claude/
+.codex/

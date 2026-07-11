@@ -1,0 +1,47 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { legacy: post.data.permalink.replace(/^\/|\/$/g, '') },
+    props: { post }
+  }));
+}
+
+type Props = { post: CollectionEntry<'posts'> };
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} canonicalPath={post.data.permalink}>
+  <PageIntro eyebrow="Archive / 历史文章" title={post.data.title} description={`发布于 ${post.data.pubDate.toLocaleDateString('zh-CN')} · 本文来自旧站归档，可能不代表当前观点。`} />
+  <article class="legacy-article section-shell">
+    <SectionHeading number="01" title="原文" />
+    <div class="legacy-article__body"><Content /></div>
+  </article>
+</BaseLayout>
+
+<style>
+  .legacy-article { padding-top: 0; }
+  .legacy-article__body { width: min(100%, var(--reading-width)); margin-inline: auto; color: var(--color-muted); font-size: 1.02rem; }
+  .legacy-article__body :global(h1),
+  .legacy-article__body :global(h2),
+  .legacy-article__body :global(h3) { margin: 2.2em 0 0.8em; font-family: var(--font-display); font-weight: 500; }
+  .legacy-article__body :global(h1) { font-size: 2.3rem; }
+  .legacy-article__body :global(h2) { font-size: 1.85rem; }
+  .legacy-article__body :global(h3) { font-size: 1.45rem; }
+  .legacy-article__body :global(p),
+  .legacy-article__body :global(li) { line-height: 1.9; }
+  .legacy-article__body :global(a) { color: var(--color-accent-soft); overflow-wrap: anywhere; }
+  .legacy-article__body :global(img) { height: auto; margin: 2rem auto; border: 1px solid var(--color-border); border-radius: 0.8rem; }
+  .legacy-article__body :global(blockquote) { margin: 2rem 0; padding: 0.8rem 1.25rem; color: var(--color-text); background: var(--color-surface-soft); border-left: 2px solid var(--color-accent); }
+  .legacy-article__body :global(pre) { padding: 1rem; overflow-x: auto; color: var(--color-text); background: var(--color-bg-deep); border: 1px solid var(--color-border); border-radius: 0.8rem; }
+  .legacy-article__body :global(code) { color: var(--color-accent-soft); font-size: 0.88em; }
+  .legacy-article__body :global(table) { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; }
+  .legacy-article__body :global(th),
+  .legacy-article__body :global(td) { padding: 0.6rem; border: 1px solid var(--color-border); }
+</style>
