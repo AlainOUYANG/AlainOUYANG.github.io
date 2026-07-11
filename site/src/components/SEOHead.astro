@@ -1,0 +1,42 @@
+---
+type Props = {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  image?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  image = '/images/profile.png',
+  jsonLd
+} = Astro.props;
+const siteName = '佐坤 · Zuokun Ouyang';
+const pageTitle = title === siteName ? title : `${title} · 佐坤`;
+const canonical = new URL(canonicalPath, Astro.site ?? Astro.url.origin);
+const socialImage = new URL(image, Astro.site ?? Astro.url.origin);
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content={description} />
+<meta name="theme-color" content="#18121e" />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" href="/images/favicon.ico" sizes="any" />
+<link rel="alternate" type="application/rss+xml" title={siteName} href="/rss.xml" />
+<title>{pageTitle}</title>
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={socialImage} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+{jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

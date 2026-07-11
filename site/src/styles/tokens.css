@@ -1,0 +1,28 @@
+:root {
+  color-scheme: dark;
+  --color-bg: #18121e;
+  --color-bg-deep: #110d16;
+  --color-surface: #241b2b;
+  --color-surface-raised: #2e2236;
+  --color-surface-soft: rgba(255, 255, 255, 0.045);
+  --color-text: #f5ede3;
+  --color-muted: #b9a9bb;
+  --color-subtle: #857789;
+  --color-border: rgba(245, 237, 227, 0.13);
+  --color-border-strong: rgba(245, 237, 227, 0.23);
+  --color-accent: #f08a82;
+  --color-accent-soft: #ffb69f;
+  --color-accent-violet: #9b78ff;
+  --color-accent-amber: #e5b56b;
+  --gradient-accent: linear-gradient(115deg, var(--color-accent), var(--color-accent-violet));
+  --shadow-card: 0 1.5rem 5rem rgba(7, 4, 10, 0.28);
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+  --content-width: 70rem;
+  --reading-width: 46rem;
+  --gutter: clamp(1.15rem, 4vw, 2.5rem);
+  --section-space: clamp(5rem, 10vw, 9rem);
+  --font-sans: "Avenir Next", Avenir, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-display: Iowan Old Style, Baskerville, "Times New Roman", "Songti SC", STSong, serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

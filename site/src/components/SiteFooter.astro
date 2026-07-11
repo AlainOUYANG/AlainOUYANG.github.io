@@ -1,0 +1,31 @@
+---
+import { profile } from '../data/profile';
+---
+
+<footer class="site-footer" data-site-footer>
+  <div class="site-footer__inner shell">
+    <div>
+      <p class="site-footer__statement">研究增量，也创造新东西。</p>
+      <p class="site-footer__meta">© {new Date().getFullYear()} 佐坤 · 内容与实验持续生长中</p>
+    </div>
+    <nav aria-label="页脚导航">
+      <a href="/archive/">历史归档</a>
+      <a href="/rss.xml">RSS</a>
+      <a href={profile.links.github} rel="me">GitHub</a>
+      <a href={profile.links.scholar} rel="me">Google Scholar</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding-block: 3rem; border-top: 1px solid var(--color-border); }
+  .site-footer__inner { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
+  .site-footer__statement { margin-bottom: 0.45rem; font-family: var(--font-display); font-size: clamp(1.35rem, 3vw, 2rem); letter-spacing: -0.025em; }
+  .site-footer__meta { margin: 0; color: var(--color-subtle); font-size: 0.76rem; }
+  nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.6rem 1.2rem; }
+  nav a { color: var(--color-muted); font-size: 0.78rem; text-decoration: none; }
+  @media (max-width: 42rem) {
+    .site-footer__inner { align-items: start; flex-direction: column; }
+    nav { justify-content: flex-start; }
+  }
+</style>

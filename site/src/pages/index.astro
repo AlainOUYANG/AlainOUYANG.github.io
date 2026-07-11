@@ -1,16 +1,8 @@
 ---
-const title = '佐坤 · Zuokun Ouyang';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
 ---
 
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <h1>研究增量，也创造新东西。</h1>
-    <p>佐坤</p>
-  </body>
-</html>
+<BaseLayout title="佐坤 · Zuokun Ouyang" description="佐坤的个人网站：智能营销、因果推断、Uplift Modeling 与 AI 应用。">
+  <PageIntro eyebrow="Hello, I’m Zuokun" title="研究增量，也创造新东西。" description="佐坤，智能营销与因果推断算法工程师。" />
+</BaseLayout>

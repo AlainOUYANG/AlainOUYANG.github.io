@@ -1,0 +1,25 @@
+---
+type Props = {
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
+const { eyebrow, title, description } = Astro.props;
+---
+
+<header class="page-intro shell" data-page-intro>
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{title}</h1>
+  <p class="page-intro__description">{description}</p>
+  <div class="page-intro__line" aria-hidden="true"><span></span></div>
+</header>
+
+<style>
+  .page-intro { padding-top: clamp(5.5rem, 12vw, 10rem); padding-bottom: clamp(3.5rem, 7vw, 6rem); }
+  h1 { max-width: 14ch; margin-bottom: 1.5rem; font-size: clamp(3rem, 8vw, 6.75rem); }
+  .page-intro__description { max-width: 38rem; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); color: var(--color-muted); font-size: clamp(1.05rem, 2vw, 1.3rem); }
+  .page-intro__line { height: 1px; overflow: hidden; background: var(--color-border); }
+  .page-intro__line span { display: block; width: min(28%, 13rem); height: 100%; background: var(--gradient-accent); }
+  @media (max-width: 44rem) { h1 { font-size: clamp(2.7rem, 15vw, 4.7rem); } }
+</style>

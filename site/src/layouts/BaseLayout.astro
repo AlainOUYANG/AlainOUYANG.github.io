@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import SEOHead from '../components/SEOHead.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+type Props = {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  lang?: string;
+  image?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  lang = 'zh-CN',
+  image,
+  jsonLd
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <SEOHead {title} {description} {canonicalPath} {image} {jsonLd} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到正文</a>
+    <SiteHeader />
+    <main id="main-content"><slot /></main>
+    <SiteFooter />
+  </body>
+</html>
