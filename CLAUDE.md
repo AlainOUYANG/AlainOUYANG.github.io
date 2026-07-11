@@ -95,7 +95,7 @@ Content priority:
 - 30% AI applications, automation, and productivity tools.
 - 20% writing, podcast, academic research, and historical background.
 
-The approved next visual system is editorial minimalism: warm off-white backgrounds, dark neutral text, one muted accent, narrow reading widths, typographic hierarchy, generous whitespace, and thin rules. Remove the particle/typewriter hero, color glows, gradients, oversized headings, Bento workspace, large rounded cards, ornamental numbering, and nonessential reveal motion. Content is presented primarily as compact text rows and chronological lists. Small thumbnails are allowed only when they communicate project or podcast identity; personal portraits are not allowed.
+The approved next visual system is editorial minimalism: warm off-white backgrounds, dark neutral text, one muted accent, narrow reading widths, typographic hierarchy, generous whitespace, and thin rules. Chinese text uses LXGW WenKai; Latin text uses Source Sans 3. Remove the particle/typewriter hero, color glows, gradients, oversized headings, Bento workspace, large rounded cards, ornamental numbering, and nonessential reveal motion. Content is presented primarily as compact text rows and chronological lists. Small thumbnails are allowed only when they communicate project or podcast identity; personal portraits are not allowed.
 
 The content model separates professional topics from publishing formats. Growth, causal inference, Uplift Modeling, AI tools, and productivity are topics; article, podcast, project, note, and publication are formats. Podcast remains a publishing format within writing until it has enough sustained output to justify first-level navigation.
 
