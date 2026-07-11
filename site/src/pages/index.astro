@@ -13,15 +13,14 @@ import { profile } from '../data/profile';
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: profile.nameEn,
-  alternateName: profile.nameZh,
+  name: profile.id,
   url: 'https://alainouyang.github.io/',
   jobTitle: profile.headline,
   sameAs: Object.values(profile.links)
 };
 ---
 
-<BaseLayout title="佐坤 · Zuokun Ouyang" description="佐坤的个人网站：智能营销、因果推断、Uplift Modeling 与 AI 应用。" jsonLd={personJsonLd}>
+<BaseLayout title="Kzyo" description="Kzyo 的个人网站：营销增长、因果推断、Uplift Modeling 与 AI 应用。" jsonLd={personJsonLd}>
   <ParticleHero />
 
   <section id="workbench" class="section-shell">

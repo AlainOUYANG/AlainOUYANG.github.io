@@ -10,7 +10,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 const recent = posts.slice(0, 6);
 ---
 
-<BaseLayout title="文章" description="佐坤关于因果推断、算法实践、AI 应用与阅读思考的文章。">
+<BaseLayout title="文章" description="Kzyo 关于因果推断、算法实践、AI 应用与阅读思考的文章。">
   <PageIntro eyebrow="Writing / 文章" title="写下可复用的方法与判断" description="围绕增量建模、实验评估、工程实践和 AI 应用，把零散经验整理成能够被检验和继续讨论的文字。" />
 
   <section class="section-shell">

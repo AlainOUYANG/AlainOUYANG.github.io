@@ -20,6 +20,6 @@ export async function GET() {
     return `<item><title><![CDATA[${title}]]></title><link>${link}</link><guid isPermaLink="true">${link}</guid><description><![CDATA[${data.description.replaceAll(']]>', ']]&gt;')}]]></description><pubDate>${data.pubDate.toUTCString()}</pubDate></item>`;
   }).join('');
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>佐坤 · Zuokun Ouyang</title><link>${site}/</link><description>智能营销、因果推断、Uplift Modeling 与 AI 应用。</description><language>zh-CN</language>${items}</channel></rss>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Kzyo</title><link>${site}/</link><description>营销增长、因果推断、Uplift Modeling 与 AI 应用。</description><language>zh-CN</language>${items}</channel></rss>`;
   return new Response(xml, { headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' } });
 }

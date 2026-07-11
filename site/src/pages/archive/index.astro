@@ -8,7 +8,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title="历史归档" description="佐坤旧站文章的完整历史归档。">
+<BaseLayout title="历史归档" description="Kzyo 旧站文章的完整历史归档。">
   <PageIntro eyebrow="Archive / 历史归档" title="保留来路，但不让它定义现在" description="这里完整保留旧站文章和既有链接。历史内容可能不代表当前观点、工作背景或网站重点。" />
 
   <section class="section-shell">

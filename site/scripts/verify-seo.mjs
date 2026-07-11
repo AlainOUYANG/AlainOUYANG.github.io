@@ -8,9 +8,13 @@ for (const file of ['index.html', 'rss.xml', 'sitemap.xml', 'robots.txt']) {
 const home = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 assert.match(home, /application\/ld\+json/);
 assert.match(home, /rel="canonical"/);
+assert.match(home, /<title>Kzyo<\/title>/);
+assert.match(home, /og:site_name" content="Kzyo"/);
+assert.doesNotMatch(home, /profile\.png|佐坤|Zuokun Ouyang/);
 
 const rss = await readFile(new URL('../dist/rss.xml', import.meta.url), 'utf8');
 assert.match(rss, /<rss version="2\.0">/);
+assert.match(rss, /<title>Kzyo<\/title>/);
 assert.equal((rss.match(/<item>/g) ?? []).length, 50);
 
 const sitemap = await readFile(new URL('../dist/sitemap.xml', import.meta.url), 'utf8');

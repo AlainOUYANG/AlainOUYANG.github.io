@@ -11,11 +11,11 @@ const {
   title,
   description,
   canonicalPath = Astro.url.pathname,
-  image = '/images/profile.png',
+  image = '/images/og-kzyo.svg',
   jsonLd
 } = Astro.props;
-const siteName = '佐坤 · Zuokun Ouyang';
-const pageTitle = title === siteName ? title : `${title} · 佐坤`;
+const siteName = 'Kzyo';
+const pageTitle = title === siteName ? title : `${title} · Kzyo`;
 const canonical = new URL(canonicalPath, Astro.site ?? Astro.url.origin);
 const socialImage = new URL(image, Astro.site ?? Astro.url.origin);
 ---
@@ -23,7 +23,7 @@ const socialImage = new URL(image, Astro.site ?? Astro.url.origin);
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content={description} />
-<meta name="theme-color" content="#18121e" />
+<meta name="theme-color" content="#f4f0e8" />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonical} />
 <link rel="icon" href="/images/favicon.ico" sizes="any" />
