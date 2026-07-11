@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+type Props = {
+  post: CollectionEntry<'posts'>;
+  archive?: boolean;
+};
+
+const { post, archive = false } = Astro.props;
+const published = post.data.pubDate.toISOString();
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: published,
+  dateModified: published,
+  inLanguage: 'zh-CN',
+  mainEntityOfPage: new URL(post.data.permalink, Astro.site ?? Astro.url.origin).href,
+  author: {
+    '@type': 'Person',
+    name: 'Zuokun Ouyang',
+    alternateName: '佐坤',
+    url: 'https://alainouyang.github.io/'
+  }
+};
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} canonicalPath={post.data.permalink} jsonLd={articleJsonLd}>
+  <PageIntro
+    eyebrow={archive ? 'Archive / 历史文章' : post.data.category}
+    title={post.data.title}
+    description={`发布于 ${post.data.pubDate.toLocaleDateString('zh-CN')} · ${archive ? '本文来自旧站归档，可能不代表当前观点。' : post.data.description}`}
+  />
+  <article class="article-layout section-shell">
+    <SectionHeading number="01" title="正文" />
+    <div class="article-layout__body"><slot /></div>
+    <footer class="article-layout__footer">
+      <span>{archive ? '历史归档' : post.data.category}</span>
+      <a href={archive ? '/archive/' : '/writing/'}>{archive ? '返回历史归档' : '返回文章'} <b aria-hidden="true">↗</b></a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-layout { padding-top: 0; }
+  .article-layout__body { width: min(100%, var(--reading-width)); margin-inline: auto; color: var(--color-muted); font-size: 1.02rem; }
+  .article-layout__body :global(h1),
+  .article-layout__body :global(h2),
+  .article-layout__body :global(h3) { margin: 2.2em 0 0.8em; font-family: var(--font-display); font-weight: 500; scroll-margin-top: 6rem; }
+  .article-layout__body :global(h1) { font-size: 2.3rem; }
+  .article-layout__body :global(h2) { font-size: 1.85rem; }
+  .article-layout__body :global(h3) { font-size: 1.45rem; }
+  .article-layout__body :global(p),
+  .article-layout__body :global(li) { line-height: 1.9; }
+  .article-layout__body :global(a) { color: var(--color-accent-soft); overflow-wrap: anywhere; }
+  .article-layout__body :global(img) { height: auto; margin: 2rem auto; border: 1px solid var(--color-border); border-radius: 0.8rem; }
+  .article-layout__body :global(blockquote) { margin: 2rem 0; padding: 0.8rem 1.25rem; color: var(--color-text); background: var(--color-surface-soft); border-left: 2px solid var(--color-accent); }
+  .article-layout__body :global(blockquote p:last-child) { margin-bottom: 0; }
+  .article-layout__body :global(pre) { padding: 1rem; overflow-x: auto; color: var(--color-text); background: var(--color-bg-deep) !important; border: 1px solid var(--color-border); border-radius: 0.8rem; }
+  .article-layout__body :global(code) { color: var(--color-accent-soft); font-size: 0.88em; }
+  .article-layout__body :global(table) { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; }
+  .article-layout__body :global(th),
+  .article-layout__body :global(td) { padding: 0.6rem; border: 1px solid var(--color-border); }
+  .article-layout__footer { display: flex; width: min(100%, var(--reading-width)); align-items: center; justify-content: space-between; gap: 1rem; margin: 5rem auto 0; padding-top: 1.25rem; color: var(--color-subtle); font-size: 0.74rem; border-top: 1px solid var(--color-border); }
+  .article-layout__footer a { color: var(--color-text); font-weight: 700; text-decoration: none; }
+  .article-layout__footer b { color: var(--color-accent); }
+</style>

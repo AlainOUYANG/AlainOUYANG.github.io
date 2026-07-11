@@ -3,9 +3,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import { publications, researchFiles } from '../../data/publications';
+
+const scholarlyJsonLd = publications.map((publication) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: publication.title,
+  author: publication.authors.split(', ').map((name) => ({ '@type': 'Person', name })),
+  datePublished: publication.year,
+  isPartOf: publication.venue,
+  sameAs: publication.doi
+}));
 ---
 
-<BaseLayout title="研究" description="佐坤的公开论文、博士研究与学术资料。">
+<BaseLayout title="研究" description="佐坤的公开论文、博士研究与学术资料。" jsonLd={scholarlyJsonLd}>
   <PageIntro eyebrow="Research / 研究" title="研究训练，是判断模型边界的方法" description="从时间序列预测到室内定位，博士阶段的研究让我持续关注：问题是否被正确表述，比较是否公平，结论是否经得住验证。" />
 
   <section class="section-shell">

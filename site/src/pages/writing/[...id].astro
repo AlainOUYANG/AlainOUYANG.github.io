@@ -1,11 +1,11 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
-import ArticleLayout from '../layouts/ArticleLayout.astro';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const posts = await getCollection('posts', ({ data }) => !data.draft && data.permalink.startsWith('/writing/'));
   return posts.map((post) => ({
-    params: { legacy: post.data.permalink.replace(/^\/|\/$/g, '') },
+    params: { id: post.data.permalink.replace(/^\/writing\/|\/$/g, '') },
     props: { post }
   }));
 }
@@ -15,4 +15,4 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<ArticleLayout {post} archive><Content /></ArticleLayout>
+<ArticleLayout {post}><Content /></ArticleLayout>
