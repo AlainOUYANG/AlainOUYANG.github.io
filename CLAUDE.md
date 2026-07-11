@@ -8,7 +8,7 @@ The production site at <https://alainouyang.github.io> is an Astro 7 static site
 
 The legacy Jekyll / AcademicPages source remains in the repository as a rollback reference. It is no longer the GitHub Pages production source and must not be deleted without separate user approval.
 
-Progress and verification status are tracked in `ROADMAP.md`. The approved redesign is specified in `docs/superpowers/specs/2026-07-10-personal-site-astro-redesign-design.md`.
+Progress and verification status are tracked in `ROADMAP.md`. The production release is documented in `docs/superpowers/specs/2026-07-10-personal-site-astro-redesign-design.md`; the approved next redesign is specified in `docs/superpowers/specs/2026-07-11-kzyo-editorial-minimal-redesign-design.md` and supersedes the previous identity and visual direction.
 
 ## Product Direction
 
@@ -17,7 +17,9 @@ The redesigned site is a Chinese-first professional personal site for industry p
 - Primary positioning: intelligent marketing, causal inference, and Uplift Modeling.
 - Secondary positioning: independent AI applications and personal productivity tools.
 - Academic work is supporting evidence, not the homepage's main identity.
-- Chinese display name is always `佐坤`. Do not use `左坤`.
+- Public-facing site identity is always `Kzyo`. Do not display `佐坤`, `左坤`, `Zuokun Ouyang`, or other real-name variants in site chrome, page introductions, metadata, or first-party author bylines.
+- Do not display personal portraits or profile photos. Legacy image files may remain as rollback assets but must not be referenced by the Astro production site.
+- Bibliographic author lists, CV files, publication PDFs, and explicitly retained external profiles such as Google Scholar, LinkedIn, and ORCID may contain the legal name. Do not rewrite scholarly records or third-party destinations to use `Kzyo`.
 - Company work may be described only at the role and professional-domain level. Do not publish company cases, business details, metrics, or internal methods.
 - English content is limited to the profile summary, CV, and publications/research where useful.
 
@@ -72,7 +74,7 @@ src/data/topics.*           Causal inference, Uplift, and marketing topics
 
 Use Astro Content Collections schemas so missing or invalid required fields fail the build. Pages compose reusable components; they must not duplicate profile, experience, publication, or project data.
 
-The first release intentionally excludes a CMS, comments, site search, dynamic filters, analytics, and a user-switchable theme. The fixed dark presentation is part of the approved design system.
+The first release intentionally excludes a CMS, comments, site search, dynamic filters, analytics, and a user-switchable theme. The next approved redesign replaces the fixed dark presentation with a warm-light editorial system inspired by the restraint of Steph Ango's site without copying its wording, assets, exact typography, or layout.
 
 ## Approved Information Architecture
 
@@ -89,13 +91,15 @@ Historical archives, RSS, sitemap, and English CV belong in the footer or second
 
 Content priority:
 
-- 60% intelligent marketing, causal inference, and Uplift Modeling.
-- 25% AI applications and productivity tools.
-- 15% academic research and historical background.
+- 50% intelligent marketing, causal inference, and Uplift Modeling.
+- 30% AI applications, automation, and productivity tools.
+- 20% writing, podcast, academic research, and historical background.
 
-The whole Astro site uses one visual system: deep plum-black backgrounds, warm ivory text, coral-to-violet accents, numbered sections, thin rules, rounded editorial cards, and restrained reveal motion. The homepage adds an immersive particle/typewriter hero and a richer Bento workspace; subpages reuse the same tokens, header, page intro, section heading, card, and footer components. The largest homepage card is reserved for causal inference and Uplift Modeling. Mobile layouts reflow into a natural single-column reading order.
+The approved next visual system is editorial minimalism: warm off-white backgrounds, dark neutral text, one muted accent, narrow reading widths, typographic hierarchy, generous whitespace, and thin rules. Remove the particle/typewriter hero, color glows, gradients, oversized headings, Bento workspace, large rounded cards, ornamental numbering, and nonessential reveal motion. Content is presented primarily as compact text rows and chronological lists. Small thumbnails are allowed only when they communicate project or podcast identity; personal portraits are not allowed.
 
-The reference site at `https://zhangtenggan.cn/` informs the narrative rhythm, anchor navigation, numbered sections, and immersive hero only. Do not copy its wording, assets, particle pattern, exact colors, typography, or spacing.
+The content model separates professional topics from publishing formats. Growth, causal inference, Uplift Modeling, AI tools, and productivity are topics; article, podcast, project, note, and publication are formats. Podcast remains a publishing format within writing until it has enough sustained output to justify first-level navigation.
+
+The previous release used `https://zhangtenggan.cn/` as a visual reference. Its immersive hero, particle treatment, numbered sections, and Bento rhythm are no longer part of the approved next design. The next design references the editorial restraint of `https://stephango.com/` without copying wording, assets, exact typography, or layout.
 
 ## Migration Rules
 
@@ -103,7 +107,7 @@ The reference site at `https://zhangtenggan.cn/` informs the narrative rhythm, a
 - Preserve historical post permalinks wherever possible.
 - Migrate historical posts into an archive; only curated posts appear in primary content feeds.
 - Reconstruct publications from real records and remove duplicate/template entries from the new build.
-- Preserve valid CV, thesis, publication PDF, avatar, and favicon URLs.
+- Preserve valid CV, thesis, publication PDF, legacy avatar asset, and favicon URLs for compatibility and rollback, but do not reference the personal avatar from Astro production pages.
 - Do not migrate template demo pages or fake talks, teaching, portfolio, and publication entries.
 - Keep the Jekyll source until the Astro build, route parity, and production preview are verified.
 - Deleting legacy files, changing the GitHub Pages publishing source, or rolling back requires separate user approval.

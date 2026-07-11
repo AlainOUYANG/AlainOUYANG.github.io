@@ -2,7 +2,7 @@
 
 ## 当前阶段
 
-Astro 7 个人网站已正式发布到 GitHub Pages。生产源为 `site/` 与 `.github/workflows/deploy.yml`；旧 Jekyll／AcademicPages 文件保留为回退参考，不再承担线上构建。
+Astro 7 个人网站已正式发布到 GitHub Pages。下一阶段已确认改为以 `Kzyo` 为公开身份的暖白编辑型极简设计；当前先完成设计规格，线上仍运行上一版深色站点。
 
 ## 已完成
 
@@ -28,20 +28,26 @@ Astro 7 个人网站已正式发布到 GitHub Pages。生产源为 `site/` 与 `
 - 2026-07-10：新增基于 `withastro/action@v6` 与 `actions/deploy-pages@v5` 的 GitHub Pages workflow，并将 Pages 构建源从 `legacy` 切换为 `workflow`。
 - 2026-07-10：将 `master` 推送到 GitHub，Actions 运行 `29138964139` 的 build 与 deploy job 均成功，Astro 新站正式上线。
 - 2026-07-10：完成线上首页、六个核心栏目、历史文章、RSS、sitemap 与自定义 404 验收。
+- 2026-07-11：确认下一版参考 Steph Ango 的编辑型极简原则，移除粒子、渐变、Bento 大卡片和过度装饰。
+- 2026-07-11：确认站内公开身份统一为 `Kzyo`，不展示本人照片；论文规范署名、CV 与已授权学术／职业外链允许保留真实姓名。
+- 2026-07-11：完成 Kzyo 编辑型极简改版设计规格，明确内容架构、匿名边界、视觉系统、SEO 与验收标准。
 
 ## 进行中
 
+- 等待用户审阅 Kzyo 编辑型极简改版设计规格。
 - 观察 Astro 生产站稳定性，旧 Jekyll 文件暂不删除。
 
 ## 待办
 
 1. 持续整理因果推断、Uplift Modeling 与智能营销的精选文章。
 2. 为 AI 实验室补充可公开的项目链接和过程记录。
-3. Astro 生产站稳定运行一段时间且用户再次确认后，再决定是否删除旧 Jekyll 文件。
+3. 用户确认新设计规格后，编写实施计划并改造 Astro 站点。
+4. Astro 生产站稳定运行一段时间且用户再次确认后，再决定是否删除旧 Jekyll 文件。
 
 ## 阻塞与待确认
 
 - 当前没有本地实现阻塞。
+- Kzyo 编辑型极简改版尚未进入实现，等待设计规格审阅。
 - 新站只使用已确认的职业领域与博士背景，没有公开当前雇主、地点、邮箱、公司案例、业务数据或内部指标。
 - 用户已确认公开 GitHub、Google Scholar、LinkedIn 和 ORCID；当前雇主、地点和邮箱保持不发布。
 - 任何再次修改 GitHub Pages 发布源、删除旧文件或执行回滚的操作均需单独确认。
