@@ -1,0 +1,570 @@
+[
+  {
+    "source": "_posts/2017-02-15-Git指令整理.md",
+    "permalink": "/git指令整理/"
+  },
+  {
+    "source": "_posts/2017-03-17-Mac终端(zsh)下用代码编辑器打开文件或目录.md",
+    "permalink": "/mac终端-zsh-下用代码编辑器打开文件或目录/"
+  },
+  {
+    "source": "_posts/2017-11-21-《未来世界的幸存者-卡辛斯基的警告》读后感.md",
+    "permalink": "/未来世界的幸存者-卡辛斯基的警告-读后感/"
+  },
+  {
+    "source": "_posts/2018-02-21-CNN卷积神经网络架构综述.md",
+    "permalink": "/cnn卷积神经网络架构综述/"
+  },
+  {
+    "source": "_posts/2018-07-21-李志.md",
+    "permalink": "/李志/"
+  },
+  {
+    "source": "_posts/2018-07-30-利用ssh传输文件.md",
+    "permalink": "/利用ssh传输文件/"
+  },
+  {
+    "source": "_posts/2018-08-01-Numpy—np.random.seed()函数的应用.md",
+    "permalink": "/numpy-np-random-seed-函数的应用/"
+  },
+  {
+    "source": "_posts/2018-12-29-针对数据分析工作的Python入门简介（上篇）.md",
+    "permalink": "/针对数据分析工作的python入门简介-上篇/"
+  },
+  {
+    "source": "_posts/2019-01-01-2018年度总结.md",
+    "permalink": "/2018年度总结/"
+  },
+  {
+    "source": "_posts/2019-01-14-（转载）Python 字符串前面加 u, r, b 的含义.md",
+    "permalink": "/转载-python-字符串前面加-u-r-b-的含义/"
+  },
+  {
+    "source": "_posts/2019-03-31-左耳听风 ARTS 打卡-第 1 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-1-周/"
+  },
+  {
+    "source": "_posts/2019-03-31-左耳听风 ARTS 打卡-第 2 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-2-周/"
+  },
+  {
+    "source": "_posts/2019-04-07-《A landscape diagram for Python data》翻译-Python 数据科学的风景图.md",
+    "permalink": "/a-landscape-diagram-for-python-data-翻译-python-数据科学的风景图/"
+  },
+  {
+    "source": "_posts/2019-04-14-iTerm2 外观配置.md",
+    "permalink": "/iterm2-外观配置/"
+  },
+  {
+    "source": "_posts/2019-04-14-左耳听风 ARTS 打卡-第 3 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-3-周/"
+  },
+  {
+    "source": "_posts/2019-04-21-左耳听风 ARTS 打卡-第 4 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-4-周/"
+  },
+  {
+    "source": "_posts/2019-04-28-左耳听风 ARTS 打卡-第 5 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-5-周/"
+  },
+  {
+    "source": "_posts/2019-05-12-左耳听风 ARTS 打卡-第 7 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-7-周/"
+  },
+  {
+    "source": "_posts/2019-05-19-左耳听风 ARTS 打卡-第 8 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-8-周/"
+  },
+  {
+    "source": "_posts/2019-06-02-左耳听风 ARTS 打卡-第 9 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-9-周/"
+  },
+  {
+    "source": "_posts/2019-06-09-左耳听风 ARTS 打卡-第 10 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-10-周/"
+  },
+  {
+    "source": "_posts/2019-06-16-左耳听风 ARTS 打卡-第 11 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-11-周/"
+  },
+  {
+    "source": "_posts/2019-06-19-《Using Machine Learning to Solve Real-World Problems》翻译.md",
+    "permalink": "/using-machine-learning-to-solve-real-world-problems-翻译/"
+  },
+  {
+    "source": "_posts/2019-06-19-左耳听风 ARTS 打卡-第 12 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-12-周/"
+  },
+  {
+    "source": "_posts/2019-06-30-左耳听风 ARTS 打卡-第 13 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-13-周/"
+  },
+  {
+    "source": "_posts/2019-07-07-左耳听风 ARTS 打卡-第 14 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-14-周/"
+  },
+  {
+    "source": "_posts/2019-07-14-左耳听风 ARTS 打卡-第 15 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-15-周/"
+  },
+  {
+    "source": "_posts/2019-07-21-左耳听风 ARTS 打卡-第 16 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-16-周/"
+  },
+  {
+    "source": "_posts/2019-07-28-左耳听风 ARTS 打卡-第 17 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-17-周/"
+  },
+  {
+    "source": "_posts/2019-08-04-左耳听风 ARTS 打卡-第 18 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-18-周/"
+  },
+  {
+    "source": "_posts/2019-08-10-左耳听风 ARTS 打卡-第 19 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-19-周/"
+  },
+  {
+    "source": "_posts/2019-08-18-左耳听风 ARTS 打卡-第 20 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-20-周/"
+  },
+  {
+    "source": "_posts/2019-08-25-左耳听风 ARTS 打卡-第 21 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-21-周/"
+  },
+  {
+    "source": "_posts/2019-08-27-决策树中的特征选择.md",
+    "permalink": "/决策树中的特征选择/"
+  },
+  {
+    "source": "_posts/2019-09-01-左耳听风 ARTS 打卡-第 22 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-22-周/"
+  },
+  {
+    "source": "_posts/2019-09-11-左耳听风 ARTS 打卡-第 23 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-23-周/"
+  },
+  {
+    "source": "_posts/2019-09-14-左耳听风 ARTS 打卡-第 24 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-24-周/"
+  },
+  {
+    "source": "_posts/2019-09-22-左耳听风 ARTS 打卡-第 25 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-25-周/"
+  },
+  {
+    "source": "_posts/2019-09-29-左耳听风 ARTS 打卡-第 26 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-26-周/"
+  },
+  {
+    "source": "_posts/2019-10-06-左耳听风 ARTS 打卡-第 27 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-27-周/"
+  },
+  {
+    "source": "_posts/2019-10-14-左耳听风 ARTS 打卡-第 28 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-28-周/"
+  },
+  {
+    "source": "_posts/2019-10-17-左耳听风 ARTS 打卡-第 29 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-29-周/"
+  },
+  {
+    "source": "_posts/2019-10-22-左耳听风 ARTS 打卡-第 30 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-30-周/"
+  },
+  {
+    "source": "_posts/2019-11-03-左耳听风 ARTS 打卡-第 31 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-31-周/"
+  },
+  {
+    "source": "_posts/2019-11-08-左耳听风 ARTS 打卡-第 32 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-32-周/"
+  },
+  {
+    "source": "_posts/2019-11-17-左耳听风 ARTS 打卡-第 33 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-33-周/"
+  },
+  {
+    "source": "_posts/2019-11-24-左耳听风 ARTS 打卡-第 34 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-34-周/"
+  },
+  {
+    "source": "_posts/2019-11-25-左耳听风 ARTS 打卡-第 35 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-35-周/"
+  },
+  {
+    "source": "_posts/2019-12-08-左耳听风 ARTS 打卡-第 36 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-36-周/"
+  },
+  {
+    "source": "_posts/2019-12-09-左耳听风 ARTS 打卡-第 37 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-37-周/"
+  },
+  {
+    "source": "_posts/2019-12-22-左耳听风 ARTS 打卡-第 38 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-38-周/"
+  },
+  {
+    "source": "_posts/2019-12-26-左耳听风 ARTS 打卡-第 39 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-39-周/"
+  },
+  {
+    "source": "_posts/2019-12-28-《Lessons From Ancient Philosophers That Can be Applied to Everyday Life》翻译.md",
+    "permalink": "/lessons-from-ancient-philosophers-that-can-be-applied-to-everyday-life-翻译/"
+  },
+  {
+    "source": "_posts/2019-12-29-2019 年年度总结.md",
+    "permalink": "/2019-年年度总结/"
+  },
+  {
+    "source": "_posts/2019-5-05-左耳听风 ARTS 打卡-第 6 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-6-周/"
+  },
+  {
+    "source": "_posts/2020-01-04-《Want to Be a Good Programmer? Learn How To Write》翻译.md",
+    "permalink": "/want-to-be-a-good-programmer-learn-how-to-write-翻译/"
+  },
+  {
+    "source": "_posts/2020-01-05-左耳听风 ARTS 打卡-第 40 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-40-周/"
+  },
+  {
+    "source": "_posts/2020-01-06-左耳听风 ARTS 打卡-第 41 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-41-周/"
+  },
+  {
+    "source": "_posts/2020-01-10-《19 Lessons from 2019》翻译.md",
+    "permalink": "/19-lessons-from-2019-翻译/"
+  },
+  {
+    "source": "_posts/2020-01-17-《These four “clean code” tips will dramatically improve your engineering team’s productivity》翻译.md",
+    "permalink": "/these-four-clean-code-tips-will-dramatically-improve-your-engineering-team-s-productivity-翻译/"
+  },
+  {
+    "source": "_posts/2020-01-21-左耳听风 ARTS 打卡-第 42 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-42-周/"
+  },
+  {
+    "source": "_posts/2020-01-27-左耳听风 ARTS 打卡-第 43 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-43-周/"
+  },
+  {
+    "source": "_posts/2020-02-22-左耳听风 ARTS 打卡-第 44 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-44-周/"
+  },
+  {
+    "source": "_posts/2020-02-27-左耳听风 ARTS 打卡-第 45 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-45-周/"
+  },
+  {
+    "source": "_posts/2020-03-07-《6 Habits of Super Learners》翻译.md",
+    "permalink": "/6-habits-of-super-learners-翻译/"
+  },
+  {
+    "source": "_posts/2020-03-07-左耳听风 ARTS 打卡-第 46 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-46-周/"
+  },
+  {
+    "source": "_posts/2020-03-15-左耳听风 ARTS 打卡-第 47 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-47-周/"
+  },
+  {
+    "source": "_posts/2020-03-22-左耳听风 ARTS 打卡-第 48 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-48-周/"
+  },
+  {
+    "source": "_posts/2020-03-29-左耳听风 ARTS 打卡-第 49 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-49-周/"
+  },
+  {
+    "source": "_posts/2020-04-06-左耳听风 ARTS 打卡-第 50 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-50-周/"
+  },
+  {
+    "source": "_posts/2020-04-10-左耳听风 ARTS 打卡-第 51 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-51-周/"
+  },
+  {
+    "source": "_posts/2020-04-19-左耳听风 ARTS 打卡-第 52 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-52-周/"
+  },
+  {
+    "source": "_posts/2020-04-28-左耳听风 ARTS 打卡-第 53 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-53-周/"
+  },
+  {
+    "source": "_posts/2020-04-28-阅读《人生护城河》到目前为止的一些感想.md",
+    "permalink": "/阅读-人生护城河-到目前为止的一些感想/"
+  },
+  {
+    "source": "_posts/2020-05-07-左耳听风 ARTS 打卡-第 54 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-54-周/"
+  },
+  {
+    "source": "_posts/2020-05-28-左耳听风 ARTS 打卡-第 55 周.md",
+    "permalink": "/左耳听风-arts-打卡-第-55-周/"
+  },
+  {
+    "source": "_posts/2020-11-29-左耳听风 ARTS 2.0 打卡-第 1 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-1-周/"
+  },
+  {
+    "source": "_posts/2020-12-06-左耳听风 ARTS 2.0 打卡-第 2 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-2-周/"
+  },
+  {
+    "source": "_posts/2020-12-13-左耳听风 ARTS 2.0 打卡-第 3 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-3-周/"
+  },
+  {
+    "source": "_posts/2020-12-20-左耳听风 ARTS 2.0 打卡-第 4 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-4-周/"
+  },
+  {
+    "source": "_posts/2020-12-27-左耳听风 ARTS 2.0 打卡-第 5 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-5-周/"
+  },
+  {
+    "source": "_posts/2020-12-29-2020 年年终总结.md",
+    "permalink": "/2020-年年终总结/"
+  },
+  {
+    "source": "_posts/2021-01-01-10 个积极结果.md",
+    "permalink": "/10-个积极结果/"
+  },
+  {
+    "source": "_posts/2021-01-03-《把时间当作朋友》前言阅读与思考.md",
+    "permalink": "/把时间当作朋友-前言阅读与思考/"
+  },
+  {
+    "source": "_posts/2021-01-03-左耳听风 ARTS 2.0 打卡-第 6 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-6-周/"
+  },
+  {
+    "source": "_posts/2021-01-04-《把时间当作朋友》目录 + 第 0 章 - 1 问题.md",
+    "permalink": "/把时间当作朋友-目录-第-0-章-1-问题/"
+  },
+  {
+    "source": "_posts/2021-01-05-《把时间作当朋友》第 0 章 - 2 慌乱 3 解决.md",
+    "permalink": "/把时间作当朋友-第-0-章-2-慌乱-3-解决/"
+  },
+  {
+    "source": "_posts/2021-01-06-《把时间当作朋友》第一章 - 1 孰主孰仆.md",
+    "permalink": "/把时间当作朋友-第一章-1-孰主孰仆/"
+  },
+  {
+    "source": "_posts/2021-01-07-《把时间当作朋友》第一章 - 2 何谓心智.md",
+    "permalink": "/把时间当作朋友-第一章-2-何谓心智/"
+  },
+  {
+    "source": "_posts/2021-01-08-《把时间当作朋友》第二章 - 1 速成绝无可能.md",
+    "permalink": "/把时间当作朋友-第二章-1-速成绝无可能/"
+  },
+  {
+    "source": "_posts/2021-01-09-第一周总结.md",
+    "permalink": "/第一周总结/"
+  },
+  {
+    "source": "_posts/2021-01-10-左耳听风 ARTS 2.0 打卡-第 7 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-7-周/"
+  },
+  {
+    "source": "_posts/2021-01-11-《把时间当作朋友》第二章 - 2 交换才是硬道理.md",
+    "permalink": "/把时间当作朋友-第二章-2-交换才是硬道理/"
+  },
+  {
+    "source": "_posts/2021-01-12-《把时间当朋友》第二章 - 3 完美永不存在.md",
+    "permalink": "/把时间当朋友-第二章-3-完美永不存在/"
+  },
+  {
+    "source": "_posts/2021-01-13-《把时间当作朋友》第二章 - 4 未知永远存在.md",
+    "permalink": "/把时间当作朋友-第二章-4-未知永远存在/"
+  },
+  {
+    "source": "_posts/2021-01-14-《把时间当作朋友》第二章 - 5 现状无法马上摆脱.md",
+    "permalink": "/把时间当作朋友-第二章-5-现状无法马上摆脱/"
+  },
+  {
+    "source": "_posts/2021-01-14-左耳听风 ARTS 2.0 打卡-第 8 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-8-周/"
+  },
+  {
+    "source": "_posts/2021-01-15-《把时间当作朋友》第二章 - 6 与时间做朋友.md",
+    "permalink": "/把时间当作朋友-第二章-6-与时间做朋友/"
+  },
+  {
+    "source": "_posts/2021-01-16-《把时间当作朋友》第三章 - 1 估算时间.md",
+    "permalink": "/把时间当作朋友-第三章-1-估算时间/"
+  },
+  {
+    "source": "_posts/2021-01-18-《把时间当作朋友》第三章 - 2 及时行动.md",
+    "permalink": "/把时间当作朋友-第三章-2-及时行动/"
+  },
+  {
+    "source": "_posts/2021-01-19-《把时间当作朋友》第三章 - 3 直面困难.md",
+    "permalink": "/把时间当作朋友-第三章-3-直面困难/"
+  },
+  {
+    "source": "_posts/2021-01-20-《把时间当作朋友》第三章 - 4 关注步骤.md",
+    "permalink": "/把时间当作朋友-第三章-4-关注步骤/"
+  },
+  {
+    "source": "_posts/2021-01-21-《把时间当作朋友》第三章 - 5 并行串行.md",
+    "permalink": "/把时间当作朋友-第三章-5-并行串行/"
+  },
+  {
+    "source": "_posts/2021-01-22-《把时间当作朋友》第三章 - 6 感知时间 + 7 记录开销.md",
+    "permalink": "/把时间当作朋友-第三章-6-感知时间-7-记录开销/"
+  },
+  {
+    "source": "_posts/2021-01-23-《把时间当做朋友》第三章 - 8 制定预算.md",
+    "permalink": "/把时间当做朋友-第三章-8-制定预算/"
+  },
+  {
+    "source": "_posts/2021-01-25-《把时间当作朋友》第三章 - 9 计划 计划成功的前提：目标现实可行.md",
+    "permalink": "/把时间当作朋友-第三章-9-计划-计划成功的前提-目标现实可行/"
+  },
+  {
+    "source": "_posts/2021-01-26-《把时间当作朋友》第三章 - 9 计划 长期计划是需要通过时间才能习得的能力.md",
+    "permalink": "/把时间当作朋友-第三章-9-计划-长期计划是需要通过时间才能习得的能力/"
+  },
+  {
+    "source": "_posts/2021-01-27-《把时间当作朋友》第三章 - 9 计划 有些时候没必要做计划.md",
+    "permalink": "/把时间当作朋友-第三章-9-计划-有些时候没必要做计划/"
+  },
+  {
+    "source": "_posts/2021-01-28-《把时间当作朋友》第三章 - 10 列表.md",
+    "permalink": "/把时间当作朋友-第三章-10-列表/"
+  },
+  {
+    "source": "_posts/2021-01-29-《把时间当作朋友》第三章 - 11 流程.md",
+    "permalink": "/把时间当作朋友-第三章-11-流程/"
+  },
+  {
+    "source": "_posts/2021-01-30-《把时间当作朋友》第三章 - 12 预演.md",
+    "permalink": "/把时间当作朋友-第三章-12-预演/"
+  },
+  {
+    "source": "_posts/2021-01-31-左耳听风 ARTS 2.0 打卡-第 9 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-9-周/"
+  },
+  {
+    "source": "_posts/2021-02-01-《把时间当作朋友》第三章 - 13 验收.md",
+    "permalink": "/把时间当作朋友-第三章-13-验收/"
+  },
+  {
+    "source": "_posts/2021-02-02-《把时间当作朋友》第四章 - 1 效率本质.md",
+    "permalink": "/把时间当作朋友-第四章-1-效率本质/"
+  },
+  {
+    "source": "_posts/2021-02-03-《把时间当作朋友》第四章 - 2 基本途径.md",
+    "permalink": "/把时间当作朋友-第四章-2-基本途径/"
+  },
+  {
+    "source": "_posts/2021-02-04-《把时间当作朋友》第四章 - 3 主要手段.md",
+    "permalink": "/把时间当作朋友-第四章-3-主要手段/"
+  },
+  {
+    "source": "_posts/2021-02-05-《把时间当作朋友》第四章 - 4 经验局限.md",
+    "permalink": "/把时间当作朋友-第四章-4-经验局限/"
+  },
+  {
+    "source": "_posts/2021-02-08-《把时间当作朋友》第四章 - 5 自学能力 自学能力的基础是阅读理解能力.md",
+    "permalink": "/把时间当作朋友-第四章-5-自学能力-自学能力的基础是阅读理解能力/"
+  },
+  {
+    "source": "_posts/2021-02-08-左耳听风 ARTS 2.0 打卡-第 10 周.md",
+    "permalink": "/左耳听风-arts-2-0-打卡-第-10-周/"
+  },
+  {
+    "source": "_posts/2021-02-09-《把时间当作朋友》第四章 - 5 自学能力 检索能力建立在相当熟练的阅读理解能力的基础之上.md",
+    "permalink": "/把时间当作朋友-第四章-5-自学能力-检索能力建立在相当熟练的阅读理解能力的基础之上/"
+  },
+  {
+    "source": "_posts/2021-02-10-《把时间当作朋友》第四章 - 5 自学能力 写作能力在自学能力中占据重要位置.md",
+    "permalink": "/把时间当作朋友-第四章-5-自学能力-写作能力在自学能力中占据重要位置/"
+  },
+  {
+    "source": "_posts/2021-02-11-《把时间当作朋友》第四章 - 5 自学能力 实践能力是自学能力最终转化为真正价值的根本.md",
+    "permalink": "/把时间当作朋友-第四章-5-自学能力-实践能力是自学能力最终转化为真正价值的根本/"
+  },
+  {
+    "source": "_posts/2021-02-13-《把时间当作朋友》第四章 - 5 自学能力 永远保持开放的心态.md",
+    "permalink": "/把时间当作朋友-第四章-5-自学能力-永远保持开放的心态/"
+  },
+  {
+    "source": "_posts/2021-02-14-《把时间当作朋友》第四章 - 5 自学能力 了解学习的进程.md",
+    "permalink": "/把时间当作朋友-第四章-5-自学能力-了解学习的进程/"
+  },
+  {
+    "source": "_posts/2021-02-15-《把时间当作朋友》第五章 - 1 勤于思考.md",
+    "permalink": "/把时间当作朋友-第五章-1-勤于思考/"
+  },
+  {
+    "source": "_posts/2021-02-16-《把时间当作朋友》第五章 - 2 思维陷阱 概念不清.md",
+    "permalink": "/把时间当作朋友-第五章-2-思维陷阱-概念不清/"
+  },
+  {
+    "source": "_posts/2021-02-17-《把时间当作朋友》第五章 - 2 思维陷阱 拒绝接受不确定性.md",
+    "permalink": "/把时间当作朋友-第五章-2-思维陷阱-拒绝接受不确定性/"
+  },
+  {
+    "source": "_posts/2021-02-18-《把时间当作朋友》第五章 - 3 因果关系 基础.md",
+    "permalink": "/把时间当作朋友-第五章-3-因果关系-基础/"
+  },
+  {
+    "source": "_posts/2021-02-19-《把时间当作朋友》第五章 - 3 因果关系 双盲测试.md",
+    "permalink": "/把时间当作朋友-第五章-3-因果关系-双盲测试/"
+  },
+  {
+    "source": "_posts/2021-02-20-《把时间当作朋友》第五章 - 3 因果关系 自证预言 & 小结.md",
+    "permalink": "/把时间当作朋友-第五章-3-因果关系-自证预言-小结/"
+  },
+  {
+    "source": "_posts/2021-02-21-《把时间当作朋友》第五章 - 4 逆命题.md",
+    "permalink": "/把时间当作朋友-第五章-4-逆命题/"
+  },
+  {
+    "source": "_posts/2021-02-22-《把时间当作朋友》第五章 - 5 举证责任.md",
+    "permalink": "/把时间当作朋友-第五章-5-举证责任/"
+  },
+  {
+    "source": "_posts/2021-02-23-《把时间当作朋友》第五章 - 6 案例局限.md",
+    "permalink": "/把时间当作朋友-第五章-6-案例局限/"
+  },
+  {
+    "source": "_posts/2021-02-24-《把时间当作朋友》第五章 - 7 对立论证 & 8 张冠李戴.md",
+    "permalink": "/把时间当作朋友-第五章-7-对立论证-8-张冠李戴/"
+  },
+  {
+    "source": "_posts/2021-02-25-《把时间当作朋友》第五章 - 9 辨析感悟.md",
+    "permalink": "/把时间当作朋友-第五章-9-辨析感悟/"
+  },
+  {
+    "source": "_posts/2021-02-26-《把时间当作朋友》第五章 - 10 克服恐惧 & 11 辅助工具.md",
+    "permalink": "/把时间当作朋友-第五章-10-克服恐惧-11-辅助工具/"
+  },
+  {
+    "source": "_posts/2021-02-27-《把时间当作朋友》第六章 - 1 学会倾听.md",
+    "permalink": "/把时间当作朋友-第六章-1-学会倾听/"
+  },
+  {
+    "source": "_posts/2021-02-28-《把时间当作朋友》第六章 - 2 说与不说.md",
+    "permalink": "/把时间当作朋友-第六章-2-说与不说/"
+  },
+  {
+    "source": "_posts/2021-03-01-《把时间当作朋友》第六章 - 3 交流守则 - 一.md",
+    "permalink": "/把时间当作朋友-第六章-3-交流守则-一/"
+  },
+  {
+    "source": "_posts/2021-03-02-《把时间当作朋友》第六章 - 3 交流守则 - 二、三.md",
+    "permalink": "/把时间当作朋友-第六章-3-交流守则-二-三/"
+  },
+  {
+    "source": "_posts/2021-03-03-《把时间当作朋友》第六章 - 4 正确复述.md",
+    "permalink": "/把时间当作朋友-第六章-4-正确复述/"
+  },
+  {
+    "source": "_posts/2021-03-04-《把时间当作朋友》第六章 - 5 勤于反思.md",
+    "permalink": "/把时间当作朋友-第六章-5-勤于反思/"
+  }
+]

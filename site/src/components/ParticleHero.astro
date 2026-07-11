@@ -14,7 +14,8 @@ const phrases = ['因果推断', 'Uplift Modeling', '智能营销', 'AI 应用']
       <p class="eyebrow">Hello, I’m Zuokun</p>
       <h1>{profile.statement}</h1>
       <p class="particle-hero__lead">{profile.summary}</p>
-      <p class="typed-line" aria-label={`关注 ${phrases.join('、')}`}>
+      <p class="typed-line">
+        <span class="visually-hidden">关注 {phrases.join('、')}</span>
         <span aria-hidden="true">关注&nbsp;</span>
         <span data-typed aria-hidden="true">{phrases[0]}</span>
         <span class="typed-line__cursor" aria-hidden="true"></span>

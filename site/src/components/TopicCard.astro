@@ -10,7 +10,7 @@ const { topic, featured = false } = Astro.props;
   <h3>{topic.title}</h3>
   <p>{topic.description}</p>
   <ul>{topic.questions.map((question) => <li>{question}</li>)}</ul>
-  <a href="/topics/" aria-label={`查看专题：${topic.title}`}>进入专题 <span aria-hidden="true">↗</span></a>
+  <a href="/topics/">进入专题<span class="visually-hidden">：{topic.title}</span> <span aria-hidden="true">↗</span></a>
 </article>
 
 <style>

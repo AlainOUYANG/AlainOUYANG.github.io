@@ -4,9 +4,9 @@
 
 **Goal:** 在 `site/` 中构建一个可本地完整验证的 Astro 个人网站，使首页与所有子页面共享有辨识度的沉浸式深色设计系统，并保留历史内容和有效 URL。
 
-**Architecture:** 使用 Astro 6 的纯静态输出和 build-time Content Collections。全站由 `BaseLayout`、统一 design tokens、共享导航／页头／章节／卡片／页脚组成；首页额外加载无框架的粒子与打字机脚本。Jekyll 保持不动，Astro 在 `site/` 独立构建，直到发布切换获得单独授权。
+**Architecture:** 使用 Astro 7 的纯静态输出和 build-time Content Collections。全站由 `BaseLayout`、统一 design tokens、共享导航／页头／章节／卡片／页脚组成；首页额外加载无框架的粒子与打字机脚本。Jekyll 保持不动，Astro 在 `site/` 独立构建，直到发布切换获得单独授权。
 
-**Tech Stack:** Node.js 22+、Astro 6、TypeScript、Astro Content Collections、原生 CSS／Canvas／TypeScript、Node.js 内置测试与验证脚本、Playwright CLI。
+**Tech Stack:** Node.js 22+、Astro 7、TypeScript、Astro Content Collections、原生 CSS／Canvas／TypeScript、Node.js 内置测试与验证脚本、Playwright CLI。
 
 ## Global Constraints
 
@@ -53,7 +53,7 @@ console.log('build contract: PASS');
 Run: `cd site && node scripts/verify-build.mjs`  
 Expected: FAIL with `ENOENT` for `dist/index.html`.
 
-- [ ] **Step 3: 创建最小 Astro 6 配置并安装必要本地依赖**
+- [ ] **Step 3: 创建最小 Astro 7 配置并安装必要本地依赖**
 
 ```json
 {
@@ -124,7 +124,7 @@ console.log('content contract: PASS');
 Run: `cd site && node scripts/verify-content.mjs`  
 Expected: FAIL with `ENOENT` for `src/data/profile.ts`.
 
-- [ ] **Step 3: 定义 Astro 6 build-time collection**
+- [ ] **Step 3: 定义 Astro 7 build-time collection**
 
 ```ts
 import { defineCollection } from 'astro:content';

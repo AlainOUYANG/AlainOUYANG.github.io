@@ -14,7 +14,7 @@ const { eyebrow = 'Writing', title, description, href, meta, span = 'medium' } =
   <p class="article-card__eyebrow">{eyebrow}</p>
   <h3><a href={href}>{title}</a></h3>
   <p class="article-card__description">{description}</p>
-  <div class="article-card__footer"><span>{meta}</span><a href={href} aria-label={`阅读：${title}`}>阅读 <b aria-hidden="true">↗</b></a></div>
+  <div class="article-card__footer"><span>{meta}</span><a href={href}>阅读<span class="visually-hidden">：{title}</span> <b aria-hidden="true">↗</b></a></div>
 </article>
 
 <style>

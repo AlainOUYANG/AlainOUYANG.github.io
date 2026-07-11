@@ -7,7 +7,14 @@
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "verify": "node scripts/verify-build.mjs"
+    "verify": "node scripts/verify-build.mjs",
+    "verify:content": "node scripts/verify-content.mjs",
+    "verify:design": "node scripts/verify-design-system.mjs",
+    "verify:routes": "node scripts/verify-routes.mjs",
+    "verify:migration": "node scripts/verify-migration.mjs",
+    "verify:seo": "node scripts/verify-seo.mjs",
+    "verify:links": "node scripts/verify-links.mjs",
+    "verify:all": "npm run check && npm run build && npm run verify && npm run verify:content && npm run verify:design && npm run verify:routes && npm run verify:migration && npm run verify:seo && npm run verify:links"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",

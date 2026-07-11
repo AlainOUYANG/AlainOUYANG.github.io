@@ -25,6 +25,9 @@ for (const file of files) {
 }
 
 assert.ok(permalinks.has('/git指令整理/'));
+const manifest = JSON.parse(await readFile(new URL('../data/legacy-url-manifest.json', import.meta.url), 'utf8'));
+assert.equal(manifest.length, 142);
+assert.deepEqual(new Set(manifest.map((entry) => entry.permalink)), permalinks);
 const publications = await readFile(new URL('../src/data/publications.ts', import.meta.url), 'utf8');
 assert.doesNotMatch(publications, /Paper Title Number|Journal 1|paper[123]\.pdf/);
 console.log('migration contract: PASS');

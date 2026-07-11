@@ -6,7 +6,7 @@ This file defines the working rules and architecture context for this repository
 
 The production site at <https://alainouyang.github.io> is currently a Jekyll site based on the legacy AcademicPages / Minimal Mistakes template.
 
-An Astro rebuild has been designed and approved, but implementation has not started. Until the Astro build is fully verified and the user separately approves the publishing-source switch, the Jekyll site remains the production source of truth.
+The Astro rebuild is implemented and locally verified in `site/`. It is not yet the production source. Until the user separately approves the GitHub Pages publishing-source switch, the Jekyll site remains the production source of truth.
 
 Progress and verification status are tracked in `ROADMAP.md`. The approved redesign is specified in `docs/superpowers/specs/2026-07-10-personal-site-astro-redesign-design.md`.
 
@@ -46,26 +46,33 @@ bundle exec jekyll serve --config _config.yml,_config.dev.yml
 npm run build:js
 ```
 
-Do not document Astro commands as working until the Astro project has actually been scaffolded and verified.
+Verified Astro commands:
+
+```bash
+cd site
+npm install
+npm run dev
+npm run verify:all
+npm run preview
+```
 
 ## Approved Astro Target
 
-The target site is a static Astro site deployed to GitHub Pages by GitHub Actions.
+The target site is a static Astro 7 site intended for GitHub Pages deployment after separate CI/CD authorization.
 
 Planned content boundaries:
 
 ```text
 src/content/posts/          Methodology and technical writing
-src/content/lab/            Independent AI projects and experiments
-src/content/publications/   Papers and doctoral research
+src/data/lab.ts             Independent AI projects and experiments
+src/data/publications.ts    Papers and doctoral research
 src/data/profile.*          Identity, positioning, and contact links
-src/data/experience.*       Professional and education history
 src/data/topics.*           Causal inference, Uplift, and marketing topics
 ```
 
 Use Astro Content Collections schemas so missing or invalid required fields fail the build. Pages compose reusable components; they must not duplicate profile, experience, publication, or project data.
 
-The first release intentionally excludes a CMS, comments, site search, dynamic filters, analytics, and dark mode.
+The first release intentionally excludes a CMS, comments, site search, dynamic filters, analytics, and a user-switchable theme. The fixed dark presentation is part of the approved design system.
 
 ## Approved Information Architecture
 
@@ -112,7 +119,7 @@ Astro type/content checks
 Production build
 Old-to-new URL parity check
 Internal link and static asset validation
-Playwright smoke tests for primary routes and 404
+Playwright CLI checks for primary routes, 404, mobile navigation, console errors, and horizontal overflow
 Desktop and mobile screenshot review
 Lighthouse scores >= 90 for Performance, Accessibility, Best Practices, and SEO
 GitHub Pages preview verification before production switching

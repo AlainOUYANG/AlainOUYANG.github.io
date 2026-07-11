@@ -4,6 +4,7 @@ import path from 'node:path';
 
 const source = fileURLToPath(new URL('../../_posts/', import.meta.url));
 const target = fileURLToPath(new URL('../src/content/posts/', import.meta.url));
+const manifestFile = fileURLToPath(new URL('../data/legacy-url-manifest.json', import.meta.url));
 
 function field(raw, name) {
   const value = raw.match(new RegExp(`^${name}:\\s*(.+)$`, 'm'))?.[1]?.trim();
@@ -27,6 +28,7 @@ function legacySlug(filename) {
 
 await mkdir(target, { recursive: true });
 const names = (await readdir(source)).filter((name) => name.endsWith('.md')).sort();
+const manifest = [];
 
 for (const name of names) {
   const raw = await readFile(path.join(source, name), 'utf8');
@@ -38,7 +40,9 @@ for (const name of names) {
   const description = field(raw, 'subtitle') ?? title;
   const pubDate = `${date[1]}-${date[2].padStart(2, '0')}-${date[3].padStart(2, '0')}`;
   const permalink = `/${legacySlug(name)}/`;
-  const body = raw.replace(/^---\s*[\s\S]*?\n---\s*/, '');
+  const body = raw
+    .replace(/^---\s*[\s\S]*?\n---\s*/, '')
+    .replace('点击[这里](/img/shouye.JPG)查看相关新闻。', '相关新闻截图在旧站中已经缺失。');
   const frontmatter = [
     '---',
     `title: ${JSON.stringify(title)}`,
@@ -54,6 +58,9 @@ for (const name of names) {
 
   const targetName = name.replace(/[?#]/g, '-');
   await writeFile(path.join(target, targetName), `${frontmatter}\n${body.trimStart()}`, 'utf8');
+  manifest.push({ source: `_posts/${name}`, permalink });
 }
 
+await mkdir(path.dirname(manifestFile), { recursive: true });
+await writeFile(manifestFile, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
 console.log(`migrated ${names.length} posts`);
