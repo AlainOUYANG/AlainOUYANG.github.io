@@ -7,10 +7,7 @@ const isActive = (href: string) => href === '/' ? currentPath === '/' : currentP
 
 <header class="site-header" data-site-header>
   <div class="site-header__inner shell">
-    <a class="brand" href="/">
-      <span class="brand__mark" aria-hidden="true">K</span>
-      <span class="brand__text"><b>Kzyo</b></span>
-    </a>
+    <a class="brand" href="/">Kzyo</a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
       <span class="sr-only">打开导航</span>
@@ -47,104 +44,63 @@ const isActive = (href: string) => href === '/' ? currentPath === '/' : currentP
     position: sticky;
     top: 0;
     z-index: 40;
-    background: rgba(24, 18, 30, 0.78);
+    background: color-mix(in srgb, var(--color-bg) 94%, transparent);
     border-bottom: 1px solid var(--color-border);
-    backdrop-filter: blur(20px) saturate(125%);
+    backdrop-filter: blur(12px);
   }
 
   .site-header__inner {
     display: flex;
-    min-height: 4.75rem;
+    min-height: 4.25rem;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
   }
 
   .brand {
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: center;
-    gap: 0.7rem;
     color: var(--color-text);
+    font-family: var(--font-latin);
+    font-size: 1.05rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
     text-decoration: none;
   }
-
-  .brand:hover { color: var(--color-text); }
-
-  .brand__mark {
-    display: grid;
-    width: 2.2rem;
-    aspect-ratio: 1;
-    place-items: center;
-    color: var(--color-bg-deep);
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 700;
-    background: var(--gradient-accent);
-    border-radius: 0.72rem;
-  }
-
-  .brand__text {
-    display: grid;
-    line-height: 1.05;
-  }
-
-  .brand__text b { font-size: 0.92rem; letter-spacing: 0.06em; }
-  .brand__text small { margin-top: 0.25rem; color: var(--color-muted); font-size: 0.62rem; letter-spacing: 0.08em; }
 
   .site-nav {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 2.5vw, 2rem);
+    gap: clamp(1rem, 2.5vw, 1.75rem);
   }
 
   .site-nav a {
-    position: relative;
-    padding-block: 0.35rem;
     color: var(--color-muted);
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-size: 0.84rem;
     text-decoration: none;
     white-space: nowrap;
   }
 
-  .site-nav a::after {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    content: '';
-    background: var(--gradient-accent);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 260ms var(--ease-out);
+  .site-nav a:hover,
+  .site-nav a[aria-current='page'] {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
   }
 
-  .site-nav a:hover,
-  .site-nav a[aria-current='page'] { color: var(--color-text); }
-  .site-nav a:hover::after,
-  .site-nav a[aria-current='page']::after { transform: scaleX(1); transform-origin: left; }
-
   .nav-toggle { display: none; }
-  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 
   @media (max-width: 48rem) {
-    .site-header__inner { min-height: 4.25rem; }
-
     .nav-toggle {
       display: grid;
-      width: 2.75rem;
-      height: 2.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
       place-content: center;
       gap: 0.35rem;
       color: var(--color-text);
       background: transparent;
-      border: 1px solid var(--color-border);
-      border-radius: 0.8rem;
+      border: 0;
     }
 
-    .nav-toggle span:not(.sr-only) { display: block; width: 1rem; height: 1px; background: currentColor; transition: transform 180ms ease; }
+    .nav-toggle span:not(.sr-only) { display: block; width: 1.1rem; height: 1px; background: currentColor; transition: transform 160ms ease; }
     .nav-toggle[aria-expanded='true'] span:nth-child(2) { transform: translateY(3px) rotate(45deg); }
     .nav-toggle[aria-expanded='true'] span:nth-child(3) { transform: translateY(-3px) rotate(-45deg); }
 
@@ -158,14 +114,13 @@ const isActive = (href: string) => href === '/' ? currentPath === '/' : currentP
       gap: 0;
       overflow: hidden;
       visibility: hidden;
-      background: rgba(24, 18, 30, 0.97);
+      background: var(--color-bg);
       border-bottom: 1px solid var(--color-border);
-      transition: max-height 320ms var(--ease-out), visibility 320ms;
+      transition: max-height 240ms var(--ease-out), visibility 240ms;
     }
 
     .site-nav[data-open] { max-height: 28rem; visibility: visible; }
-    .site-nav a { width: min(calc(100% - 2rem), var(--content-width)); margin-inline: auto; padding: 0.95rem 0; border-bottom: 1px solid var(--color-border); }
+    .site-nav a { width: min(calc(100% - 2rem), var(--content-width)); margin-inline: auto; padding: 0.9rem 0; border-bottom: 1px solid var(--color-border); }
     .site-nav a:last-child { border-bottom: 0; }
-    .site-nav a::after { display: none; }
   }
 </style>

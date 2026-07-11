@@ -19,4 +19,10 @@ const globalCss = await readFile(new URL('../src/styles/global.css', import.meta
 assert.match(globalCss, /font-synthesis:\s*none/);
 assert.doesNotMatch(globalCss, /radial-gradient|fractalNoise/);
 
+for (const file of ['TopicCard.astro', 'ArticleCard.astro', 'LabCard.astro']) {
+  const source = await readFile(new URL(`../src/components/${file}`, import.meta.url), 'utf8');
+  assert.match(source, /data-editorial-row/);
+  assert.doesNotMatch(source, /surface-card|min-height:\s*(?:19|20|21|22|25|28)rem|gradient/);
+}
+
 console.log('design system contract: PASS');
