@@ -1,0 +1,6 @@
+<div class="bento-grid" data-bento-grid><slot /></div>
+
+<style>
+  .bento-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: dense; gap: 1rem; }
+  @media (max-width: 48rem) { .bento-grid { grid-template-columns: 1fr; } }
+</style>

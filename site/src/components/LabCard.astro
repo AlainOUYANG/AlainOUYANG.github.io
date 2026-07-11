@@ -1,0 +1,23 @@
+---
+import type { LabProject } from '../data/lab';
+
+type Props = { project: LabProject; index: number };
+const { project, index } = Astro.props;
+---
+
+<article class="lab-card surface-card">
+  <div class="lab-card__top"><span>{String(index + 1).padStart(2, '0')}</span><span>{project.status}</span></div>
+  <h3>{project.title}</h3>
+  <p>{project.description}</p>
+  <ul class="tag-list">{project.tags.map((tag) => <li>{tag}</li>)}</ul>
+</article>
+
+<style>
+  .lab-card { display: flex; min-height: 21rem; flex-direction: column; grid-column: span 4; }
+  .lab-card__top { display: flex; align-items: center; justify-content: space-between; color: var(--color-subtle); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; }
+  .lab-card__top span:last-child { color: var(--color-accent-soft); }
+  h3 { margin: auto 0 1rem; font-family: var(--font-display); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 500; }
+  p { color: var(--color-muted); }
+  .tag-list { margin-top: 1rem; }
+  @media (max-width: 48rem) { .lab-card { min-height: 19rem; grid-column: 1; } }
+</style>

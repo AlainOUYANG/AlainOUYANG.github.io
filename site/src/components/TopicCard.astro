@@ -1,0 +1,32 @@
+---
+import type { Topic } from '../data/topics';
+
+type Props = { topic: Topic; featured?: boolean };
+const { topic, featured = false } = Astro.props;
+---
+
+<article class:list={['topic-card', 'surface-card', `topic-card--${topic.accent}`, { 'topic-card--featured': featured }]}>
+  <div class="topic-card__top"><span>{topic.number}</span><span class="topic-card__dot" aria-hidden="true"></span></div>
+  <h3>{topic.title}</h3>
+  <p>{topic.description}</p>
+  <ul>{topic.questions.map((question) => <li>{question}</li>)}</ul>
+  <a href="/topics/" aria-label={`查看专题：${topic.title}`}>进入专题 <span aria-hidden="true">↗</span></a>
+</article>
+
+<style>
+  .topic-card { display: flex; min-height: 21rem; flex-direction: column; grid-column: span 4; }
+  .topic-card--featured { min-height: 28rem; grid-column: span 8; grid-row: span 2; }
+  .topic-card__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: auto; color: var(--color-subtle); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; }
+  .topic-card__dot { width: 0.55rem; aspect-ratio: 1; background: var(--card-accent, var(--color-accent)); border-radius: 50%; box-shadow: 0 0 1.5rem var(--card-accent, var(--color-accent)); }
+  .topic-card--coral { --card-accent: var(--color-accent); }
+  .topic-card--violet { --card-accent: var(--color-accent-violet); }
+  .topic-card--amber { --card-accent: var(--color-accent-amber); }
+  h3 { max-width: 15ch; margin: 2.5rem 0 1rem; font-family: var(--font-display); font-size: clamp(1.7rem, 3.5vw, 2.65rem); font-weight: 500; }
+  .topic-card--featured h3 { max-width: 13ch; font-size: clamp(2.5rem, 5vw, 4.5rem); }
+  p { max-width: 34rem; color: var(--color-muted); }
+  ul { display: grid; gap: 0.5rem; margin: 1rem 0 2rem; padding: 0; color: var(--color-subtle); font-size: 0.78rem; list-style: none; }
+  li::before { margin-right: 0.5rem; color: var(--card-accent); content: '—'; }
+  a { align-self: flex-start; margin-top: auto; color: var(--color-text); font-size: 0.8rem; font-weight: 700; text-decoration: none; }
+  a span { color: var(--card-accent); }
+  @media (max-width: 48rem) { .topic-card, .topic-card--featured { min-height: 22rem; grid-column: 1; grid-row: auto; } }
+</style>

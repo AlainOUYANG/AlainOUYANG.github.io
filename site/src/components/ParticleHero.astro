@@ -1,0 +1,203 @@
+---
+import { profile } from '../data/profile';
+
+const phrases = ['因果推断', 'Uplift Modeling', '智能营销', 'AI 应用'];
+---
+
+<section class="particle-hero" data-particle-hero data-phrases={JSON.stringify(phrases)}>
+  <canvas aria-hidden="true"></canvas>
+  <div class="particle-hero__glow particle-hero__glow--one" aria-hidden="true"></div>
+  <div class="particle-hero__glow particle-hero__glow--two" aria-hidden="true"></div>
+
+  <div class="particle-hero__inner shell">
+    <div class="particle-hero__copy">
+      <p class="eyebrow">Hello, I’m Zuokun</p>
+      <h1>{profile.statement}</h1>
+      <p class="particle-hero__lead">{profile.summary}</p>
+      <p class="typed-line" aria-label={`关注 ${phrases.join('、')}`}>
+        <span aria-hidden="true">关注&nbsp;</span>
+        <span data-typed aria-hidden="true">{phrases[0]}</span>
+        <span class="typed-line__cursor" aria-hidden="true"></span>
+      </p>
+      <div class="button-row">
+        <a class="button" href="#workbench">进入工作台 <span aria-hidden="true">↓</span></a>
+        <a class="button button--ghost" href="/about/">认识佐坤</a>
+      </div>
+    </div>
+
+    <aside class="particle-hero__index" aria-label="关注方向">
+      {profile.focus.map((item, index) => (
+        <div><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>
+      ))}
+    </aside>
+  </div>
+
+  <div class="particle-hero__scroll shell" aria-hidden="true">
+    <span>Scroll to explore</span><i></i>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-particle-hero]');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const phrases = JSON.parse(root?.dataset.phrases ?? '[]') as string[];
+
+  if (root && !reduceMotion) {
+    const canvas = root.querySelector<HTMLCanvasElement>('canvas');
+    const context = canvas?.getContext('2d');
+    const typed = root.querySelector<HTMLElement>('[data-typed]');
+    const style = getComputedStyle(root);
+    const accent = style.getPropertyValue('--color-accent').trim() || '#f08a82';
+    const violet = style.getPropertyValue('--color-accent-violet').trim() || '#9b78ff';
+    const particles = Array.from({ length: 46 }, (_, index) => ({
+      x: ((index * 47) % 101) / 100,
+      y: ((index * 71) % 97) / 96,
+      radius: 0.75 + (index % 4) * 0.42,
+      phase: index * 0.37,
+      drift: 0.7 + (index % 5) * 0.12
+    }));
+    const pointer = { x: 0, y: 0, active: false };
+    let frame = 0;
+    let visible = true;
+
+    if (canvas && context) {
+      const resize = () => {
+        const ratio = Math.min(devicePixelRatio, 2);
+        canvas.width = root.clientWidth * ratio;
+        canvas.height = root.clientHeight * ratio;
+        canvas.style.width = `${root.clientWidth}px`;
+        canvas.style.height = `${root.clientHeight}px`;
+        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      };
+
+      const draw = (time: number) => {
+        const width = root.clientWidth;
+        const height = root.clientHeight;
+        context.clearRect(0, 0, width, height);
+
+        const positions = particles.map((particle) => ({
+          x: particle.x * width + Math.sin(time / 3800 * particle.drift + particle.phase) * 9,
+          y: particle.y * height + Math.cos(time / 4200 * particle.drift + particle.phase) * 7,
+          radius: particle.radius
+        }));
+
+        for (let i = 0; i < positions.length; i += 1) {
+          for (let j = i + 1; j < positions.length; j += 1) {
+            const dx = positions[i].x - positions[j].x;
+            const dy = positions[i].y - positions[j].y;
+            const distance = Math.hypot(dx, dy);
+            if (distance < 105) {
+              context.globalAlpha = (1 - distance / 105) * 0.11;
+              context.strokeStyle = i % 2 ? accent : violet;
+              context.lineWidth = 0.65;
+              context.beginPath();
+              context.moveTo(positions[i].x, positions[i].y);
+              context.lineTo(positions[j].x, positions[j].y);
+              context.stroke();
+            }
+          }
+        }
+
+        for (const [index, particle] of positions.entries()) {
+          const pointerDistance = pointer.active ? Math.hypot(particle.x - pointer.x, particle.y - pointer.y) : 999;
+          context.globalAlpha = pointerDistance < 130 ? 0.9 : 0.28 + Math.sin(time / 1700 + index) * 0.09;
+          context.fillStyle = index % 3 ? accent : violet;
+          context.beginPath();
+          context.arc(particle.x, particle.y, particle.radius + (pointerDistance < 130 ? 0.8 : 0), 0, Math.PI * 2);
+          context.fill();
+        }
+
+        context.globalAlpha = 1;
+        if (visible) frame = requestAnimationFrame(draw);
+      };
+
+      root.addEventListener('pointermove', (event) => {
+        const rect = root.getBoundingClientRect();
+        pointer.x = event.clientX - rect.left;
+        pointer.y = event.clientY - rect.top;
+        pointer.active = true;
+      }, { passive: true });
+      root.addEventListener('pointerleave', () => { pointer.active = false; });
+
+      new ResizeObserver(resize).observe(root);
+      new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        cancelAnimationFrame(frame);
+        if (visible) frame = requestAnimationFrame(draw);
+      }).observe(root);
+      resize();
+      frame = requestAnimationFrame(draw);
+    }
+
+    if (typed) {
+      let phraseIndex = 0;
+      let characterIndex = phrases[0].length;
+      let deleting = true;
+      const type = () => {
+        const phrase = phrases[phraseIndex];
+        characterIndex += deleting ? -1 : 1;
+        typed.textContent = phrase.slice(0, characterIndex);
+        if (characterIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+        } else if (characterIndex === phrases[phraseIndex].length && !deleting) {
+          deleting = true;
+          window.setTimeout(type, 1300);
+          return;
+        }
+        window.setTimeout(type, deleting ? 55 : 95);
+      };
+      window.setTimeout(type, 1400);
+    }
+  }
+</script>
+
+<style>
+  .particle-hero {
+    position: relative;
+    display: grid;
+    min-height: calc(100svh - 4.75rem);
+    overflow: hidden;
+    isolation: isolate;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  canvas { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; opacity: 0.9; }
+  .particle-hero::after { position: absolute; inset: 0; z-index: -3; content: ''; background: linear-gradient(115deg, var(--color-bg-deep), var(--color-bg) 56%, #201326); }
+  .particle-hero__glow { position: absolute; z-index: -1; width: 28rem; aspect-ratio: 1; pointer-events: none; filter: blur(100px); border-radius: 50%; opacity: 0.12; }
+  .particle-hero__glow--one { top: -12rem; right: -8rem; background: var(--color-accent); }
+  .particle-hero__glow--two { bottom: -18rem; left: 25%; background: var(--color-accent-violet); }
+
+  .particle-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) 12rem; align-items: center; gap: clamp(3rem, 9vw, 8rem); padding-block: clamp(5rem, 10vh, 8rem) 7rem; }
+  .particle-hero__copy { max-width: 53rem; }
+  h1 { max-width: 11ch; margin-bottom: 1.5rem; font-size: clamp(4rem, 10vw, 8.7rem); line-height: 0.96; }
+  .particle-hero__lead { max-width: 39rem; margin-bottom: 1.4rem; color: var(--color-muted); font-size: clamp(1rem, 2vw, 1.25rem); }
+  .typed-line { min-height: 2rem; margin-bottom: 2.2rem; color: var(--color-accent-soft); font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.4rem); }
+  .typed-line__cursor { display: inline-block; width: 1px; height: 1em; margin-left: 0.18rem; vertical-align: -0.12em; background: currentColor; animation: blink 780ms steps(1) infinite; }
+
+  .particle-hero__index { align-self: center; border-top: 1px solid var(--color-border); }
+  .particle-hero__index div { display: grid; grid-template-columns: 2rem 1fr; gap: 0.6rem; padding-block: 0.85rem; border-bottom: 1px solid var(--color-border); }
+  .particle-hero__index span { color: var(--color-subtle); font-size: 0.62rem; letter-spacing: 0.12em; }
+  .particle-hero__index p { margin: 0; color: var(--color-muted); font-size: 0.78rem; line-height: 1.4; }
+
+  .particle-hero__scroll { position: absolute; right: 0; bottom: 1.5rem; left: 0; display: flex; align-items: center; gap: 0.8rem; color: var(--color-subtle); font-size: 0.61rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .particle-hero__scroll i { width: 3.5rem; height: 1px; overflow: hidden; background: var(--color-border); }
+  .particle-hero__scroll i::after { display: block; width: 50%; height: 100%; content: ''; background: var(--color-accent); animation: scroll-line 1.8s var(--ease-out) infinite; }
+
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes scroll-line { from { transform: translateX(-120%); } to { transform: translateX(220%); } }
+
+  @media (max-width: 48rem) {
+    .particle-hero { min-height: calc(100svh - 4.25rem); }
+    .particle-hero__inner { grid-template-columns: 1fr; gap: 3rem; padding-top: 4rem; }
+    h1 { font-size: clamp(3.65rem, 18vw, 6.5rem); }
+    .particle-hero__index { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .particle-hero__index div:nth-child(odd) { padding-right: 0.75rem; }
+    .particle-hero__index div:nth-child(even) { padding-left: 0.75rem; border-left: 1px solid var(--color-border); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    canvas { display: none; }
+    .typed-line__cursor, .particle-hero__scroll i::after { animation: none; }
+  }
+</style>

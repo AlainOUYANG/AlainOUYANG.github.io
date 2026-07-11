@@ -1,8 +1,80 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
+import ParticleHero from '../components/ParticleHero.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import TopicCard from '../components/TopicCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import LabCard from '../components/LabCard.astro';
+import { topics } from '../data/topics';
+import { labProjects } from '../data/lab';
+import { profile } from '../data/profile';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.nameEn,
+  alternateName: profile.nameZh,
+  url: 'https://alainouyang.github.io/',
+  jobTitle: profile.headline,
+  sameAs: Object.values(profile.links)
+};
 ---
 
-<BaseLayout title="佐坤 · Zuokun Ouyang" description="佐坤的个人网站：智能营销、因果推断、Uplift Modeling 与 AI 应用。">
-  <PageIntro eyebrow="Hello, I’m Zuokun" title="研究增量，也创造新东西。" description="佐坤，智能营销与因果推断算法工程师。" />
+<BaseLayout title="佐坤 · Zuokun Ouyang" description="佐坤的个人网站：智能营销、因果推断、Uplift Modeling 与 AI 应用。" jsonLd={personJsonLd}>
+  <ParticleHero />
+
+  <section id="workbench" class="section-shell">
+    <SectionHeading number="01" title="我正在研究的增量问题" description="从模型预测走向可验证的干预效果，连接实验、算法与真实决策。" />
+    <BentoGrid>
+      {topics.map((topic, index) => <TopicCard {topic} featured={index === 0} />)}
+    </BentoGrid>
+  </section>
+
+  <section class="section-shell">
+    <SectionHeading number="02" title="写作与研究档案" description="把方法、判断与实验过程整理成可以回看的公开材料。" />
+    <BentoGrid>
+      <ArticleCard
+        span="wide"
+        eyebrow="Writing Archive"
+        title="从 142 篇旧文里，重新整理长期有效的知识"
+        description="旧站文章完整保留在历史归档；新站会把因果推断、算法实践和阅读思考重新组织成更清晰的路径。"
+        href="/writing/"
+        meta="文章与历史归档"
+      />
+      <ArticleCard
+        title="时间序列、深度学习与室内定位"
+        description="博士阶段的论文与研究资料，构成我理解模型评估和工程问题的另一条线索。"
+        href="/research/"
+        eyebrow="Research"
+        meta="3 篇公开论文 · 博士论文"
+      />
+    </BentoGrid>
+  </section>
+
+  <section class="section-shell">
+    <SectionHeading number="03" title="AI 实验室" description="把 AI 当作新的创作与生产媒介，持续验证内容、知识和个人效率工具。" />
+    <BentoGrid>
+      {labProjects.map((project, index) => <LabCard {project} {index} />)}
+    </BentoGrid>
+    <div class="home-more"><a class="button button--ghost" href="/lab/">查看全部实验 <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  <section class="home-closing shell">
+    <span>Now / 2026</span>
+    <p>在智能营销里研究真正的增量，也在工作之外用 AI 做内容、工具和新的表达。</p>
+    <a href="/about/">更多关于我 <span aria-hidden="true">→</span></a>
+  </section>
 </BaseLayout>
+
+<style>
+  .home-more { display: flex; justify-content: flex-end; margin-top: 1.25rem; }
+  .home-closing { display: grid; grid-template-columns: 7rem minmax(0, 1fr) auto; align-items: start; gap: clamp(1.5rem, 5vw, 5rem); margin-bottom: var(--section-space); padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--gradient-accent); border-radius: var(--radius-card); color: var(--color-bg-deep); }
+  .home-closing > span { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  .home-closing p { max-width: 40rem; margin: 0; font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.25; }
+  .home-closing a { color: var(--color-bg-deep); font-size: 0.78rem; font-weight: 800; text-decoration: none; white-space: nowrap; }
+  @media (max-width: 44rem) {
+    .home-more { justify-content: flex-start; }
+    .home-closing { grid-template-columns: 1fr; }
+  }
+</style>
