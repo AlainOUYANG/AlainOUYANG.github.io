@@ -5,66 +5,40 @@ import SectionHeading from '../../components/SectionHeading.astro';
 import { publications, researchFiles } from '../../data/publications';
 
 const scholarlyJsonLd = publications.map((publication) => ({
-  '@context': 'https://schema.org',
-  '@type': 'ScholarlyArticle',
-  headline: publication.title,
+  '@context': 'https://schema.org', '@type': 'ScholarlyArticle', headline: publication.title,
   author: publication.authors.split(', ').map((name) => ({ '@type': 'Person', name })),
-  datePublished: publication.year,
-  isPartOf: publication.venue,
-  sameAs: publication.doi
+  datePublished: publication.year, isPartOf: publication.venue, sameAs: publication.doi
 }));
 ---
 
 <BaseLayout title="研究" description="Kzyo 的公开论文、博士研究与学术资料。" jsonLd={scholarlyJsonLd}>
   <PageIntro eyebrow="Research / 研究" title="研究训练，是判断模型边界的方法" description="从时间序列预测到室内定位，博士阶段的研究让我持续关注：问题是否被正确表述，比较是否公平，结论是否经得住验证。" />
-
   <section class="section-shell">
-    <SectionHeading number="01" title="公开论文" description="这里只保留可核验的真实论文，旧模板中的示例条目不会迁入新站。" />
+    <SectionHeading number="01" title="公开论文" description="只保留可核验的真实论文，并按规范 bibliographic record 展示作者。" />
     <div class="publication-list">
-      {publications.map((publication) => (
-        <article>
-          <span class="publication-list__year">{publication.year}</span>
-          <div>
-            <h3>{publication.title}</h3>
-            <p>{publication.authors}</p>
-            <p class="publication-list__venue">{publication.venue}</p>
-          </div>
-          <div class="publication-list__links">
-            <a href={publication.doi}>DOI ↗</a>
-            {publication.pdf && <a href={publication.pdf}>PDF ↓</a>}
-          </div>
-        </article>
-      ))}
+      {publications.map((publication) => <article><span>{publication.year}</span><div><h3>{publication.title}</h3><p>{publication.authors}</p><small>{publication.venue}</small></div><nav><a href={publication.doi}>DOI ↗</a>{publication.pdf && <a href={publication.pdf}>PDF ↓</a>}</nav></article>)}
     </div>
   </section>
-
-  <section class="section-shell research-files">
+  <section class="section-shell">
     <SectionHeading number="02" title="研究档案" />
-    <div class="research-files__grid">
-      <a class="surface-card" href={researchFiles.thesis}><span>PDF · Thesis</span><h3>博士论文</h3><p>完整论文文件，保留既有公开访问路径。</p><b>打开文档 ↗</b></a>
-      <a class="surface-card" href={researchFiles.cv}><span>PDF · Curriculum Vitae</span><h3>英文 CV</h3><p>学术经历与研究成果的英文版本。</p><b>打开文档 ↗</b></a>
+    <div class="file-list">
+      <a href={researchFiles.thesis}><span>PDF · Thesis</span><b>博士论文</b><small>完整论文文件，保留既有公开访问路径。</small></a>
+      <a href={researchFiles.cv}><span>PDF · CV</span><b>英文 CV</b><small>学术经历与研究成果的英文版本。</small></a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .publication-list { border-top: 1px solid var(--color-border); }
-  .publication-list article { display: grid; grid-template-columns: 4rem minmax(0, 1fr) auto; gap: clamp(1rem, 4vw, 3rem); padding-block: 2rem; border-bottom: 1px solid var(--color-border); }
-  .publication-list__year { color: var(--color-accent-soft); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; }
-  .publication-list h3 { max-width: 46rem; margin-bottom: 0.8rem; font-family: var(--font-display); font-size: clamp(1.35rem, 3vw, 2rem); font-weight: 500; }
-  .publication-list p { margin-bottom: 0.25rem; color: var(--color-muted); font-size: 0.82rem; }
-  .publication-list__venue { color: var(--color-subtle) !important; }
-  .publication-list__links { display: flex; flex-direction: column; align-items: flex-end; gap: 0.55rem; }
-  .publication-list__links a { color: var(--color-text); font-size: 0.73rem; font-weight: 700; text-decoration: none; }
-  .research-files__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .research-files a { display: flex; min-height: 22rem; flex-direction: column; color: var(--color-text); text-decoration: none; }
-  .research-files a > span { color: var(--color-accent-soft); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
-  .research-files h3 { margin: auto 0 1rem; font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; }
-  .research-files p { color: var(--color-muted); }
-  .research-files b { margin-top: 1rem; font-size: 0.75rem; }
-  @media (max-width: 44rem) {
-    .publication-list article { grid-template-columns: 3rem minmax(0, 1fr); }
-    .publication-list__links { grid-column: 2; align-items: flex-start; flex-direction: row; }
-    .research-files__grid { grid-template-columns: 1fr; }
-  }
+  .publication-list, .file-list { border-top: 1px solid var(--color-border); }
+  .publication-list article { display: grid; grid-template-columns: 5rem minmax(0,1fr) auto; gap: clamp(1rem,4vw,2.5rem); padding-block: 1.5rem; border-bottom: 1px solid var(--color-border); }
+  .publication-list article > span { color: var(--color-subtle); font-family: var(--font-latin); font-size: .72rem; }
+  .publication-list h3 { max-width: 46rem; margin: 0 0 .5rem; font-size: clamp(1.15rem,2vw,1.45rem); }
+  .publication-list p, .publication-list small { display: block; margin: 0; color: var(--color-muted); font-family: var(--font-latin); font-size: .8rem; }
+  .publication-list nav { display: flex; flex-direction: column; gap: .35rem; align-items: flex-end; }
+  .publication-list a { font-family: var(--font-latin); font-size: .72rem; text-decoration: none; }
+  .file-list a { display: grid; grid-template-columns: 8rem minmax(10rem,.6fr) minmax(16rem,1fr); gap: 2rem; padding-block: 1.25rem; text-decoration: none; border-bottom: 1px solid var(--color-border); }
+  .file-list span, .file-list small { color: var(--color-subtle); }
+  .file-list span { font-family: var(--font-latin); font-size: .7rem; }
+  .file-list b { font-weight: 400; }
+  @media (max-width: 44rem) { .publication-list article { grid-template-columns: 3rem 1fr; } .publication-list nav { grid-column: 2; flex-direction: row; align-items: flex-start; } .file-list a { grid-template-columns: 1fr; gap: .3rem; } }
 </style>

@@ -7,16 +7,14 @@ import { labProjects } from '../../data/lab';
 ---
 
 <BaseLayout title="AI 实验室" description="Kzyo 关于 AI 内容、知识管理与个人效率工具的公开实验。">
-  <PageIntro eyebrow="AI Lab / AI 实验室" title="把 AI 变成创作与生产的材料" description="这里记录工作之外的公开实验：AI 播客、内容生成、知识管理、工作流自动化，以及用 AI 编程做出来的小工具。" />
-
+  <PageIntro eyebrow="AI Lab / AI 实验室" title="把 AI 变成创作与生产的材料" description="记录工作之外的公开实验：AI 播客、内容生成、知识管理、工作流自动化，以及用 AI 编程做出来的小工具。" />
   <section class="section-shell">
-    <SectionHeading number="01" title="正在搭建" description="不是产品陈列柜，而是一张持续变化的实验桌。只记录可以公开讨论的方向和过程。" />
-    <div class="card-grid">{labProjects.map((project, index) => <LabCard {project} {index} />)}</div>
+    <SectionHeading number="01" title="正在构建" description="不是产品陈列柜，只记录可以公开讨论的方向、状态和过程。" />
+    <div>{labProjects.map((project, index) => <LabCard {project} {index} />)}</div>
   </section>
-
-  <section class="section-shell lab-principles">
+  <section class="section-shell">
     <SectionHeading number="02" title="实验原则" />
-    <div class="lab-principles__grid">
+    <div class="principle-list">
       <article><span>Make</span><h3>先做出可感知的东西</h3><p>用最小原型验证真实工作流，而不是停留在对模型能力的想象。</p></article>
       <article><span>Measure</span><h3>测量节省了什么</h3><p>关注认知负担、重复劳动和表达摩擦是否真正减少。</p></article>
       <article><span>Keep</span><h3>留下能复用的部分</h3><p>把提示词、流程和代码整理成下一次可以继续使用的资产。</p></article>
@@ -25,10 +23,11 @@ import { labProjects } from '../../data/lab';
 </BaseLayout>
 
 <style>
-  .lab-principles__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-  .lab-principles article { min-height: 18rem; padding: 1.5rem; background: linear-gradient(160deg, var(--color-surface-soft), transparent); border: 1px solid var(--color-border); border-radius: var(--radius-card); }
-  .lab-principles span { color: var(--color-accent-soft); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
-  .lab-principles h3 { margin: 5rem 0 0.8rem; font-family: var(--font-display); font-size: 1.65rem; font-weight: 500; }
-  .lab-principles p { color: var(--color-muted); }
-  @media (max-width: 44rem) { .lab-principles__grid { grid-template-columns: 1fr; } .lab-principles article { min-height: 15rem; } }
+  .principle-list { border-top: 1px solid var(--color-border); }
+  .principle-list article { display: grid; grid-template-columns: 7rem minmax(12rem,.7fr) minmax(16rem,1fr); gap: 2rem; padding-block: 1.35rem; border-bottom: 1px solid var(--color-border); }
+  .principle-list span { color: var(--color-subtle); font-family: var(--font-latin); font-size: .7rem; text-transform: uppercase; }
+  .principle-list h3, .principle-list p { margin: 0; }
+  .principle-list h3 { font-size: 1.25rem; }
+  .principle-list p { color: var(--color-muted); font-size: .92rem; }
+  @media (max-width: 44rem) { .principle-list article { grid-template-columns: 1fr; gap: .4rem; } }
 </style>
