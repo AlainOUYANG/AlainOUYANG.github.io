@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import TopicCard from '../../components/TopicCard.astro';
+import { topics } from '../../data/topics';
+---
+
+<BaseLayout title="专题" description="佐坤关于因果推断、Uplift Modeling 与智能营销算法的专题。">
+  <PageIntro eyebrow="Topics / 专题" title="把预测推进到可验证的决策" description="围绕增量、实验和营销决策建立知识路径。这里关注的不是模型分数本身，而是干预是否真的改变了结果。" />
+
+  <section class="section-shell">
+    <SectionHeading number="01" title="核心专题" description="三条彼此连接的主线：怎样识别因果，怎样估计异质性效果，以及怎样把结果放进营销决策。" />
+    <div class="card-grid">{topics.map((topic, index) => <TopicCard {topic} featured={index === 0} />)}</div>
+  </section>
+
+  <section class="section-shell topic-method">
+    <SectionHeading number="02" title="我用什么方式组织问题" />
+    <div class="topic-method__steps">
+      <article><span>01</span><h3>先定义决策</h3><p>明确要改变的行为、干预对象和可执行动作，避免从已有模型反推问题。</p></article>
+      <article><span>02</span><h3>再建立识别</h3><p>区分预测与因果，检查实验、观测数据和估计假设能支持什么结论。</p></article>
+      <article><span>03</span><h3>最后验证增量</h3><p>用与决策一致的评估方式验证效果，同时关注稳健性、成本和长期影响。</p></article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .topic-method__steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--color-border); }
+  .topic-method__steps article { padding: 2rem clamp(1rem, 3vw, 2rem) 0; border-right: 1px solid var(--color-border); }
+  .topic-method__steps article:first-child { padding-left: 0; }
+  .topic-method__steps article:last-child { padding-right: 0; border-right: 0; }
+  .topic-method__steps span { color: var(--color-accent-soft); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.15em; }
+  .topic-method__steps h3 { margin: 2.5rem 0 0.8rem; font-family: var(--font-display); font-size: 1.7rem; font-weight: 500; }
+  .topic-method__steps p { color: var(--color-muted); }
+  @media (max-width: 44rem) {
+    .topic-method__steps { grid-template-columns: 1fr; }
+    .topic-method__steps article, .topic-method__steps article:first-child, .topic-method__steps article:last-child { padding: 1.5rem 0; border-right: 0; border-bottom: 1px solid var(--color-border); }
+    .topic-method__steps article:last-child { border-bottom: 0; }
+    .topic-method__steps h3 { margin-top: 1.2rem; }
+  }
+</style>

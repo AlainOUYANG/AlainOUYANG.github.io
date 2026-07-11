@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout title="页面没有找到" description="这个页面不存在，或已经移动到新的位置。" canonicalPath="/404.html">
+  <PageIntro eyebrow="404 / Not Found" title="这个页面暂时不在这里" description="链接可能已经变化，也可能属于尚未迁移的旧站内容。你可以从首页重新开始，或者进入完整文章归档。" />
+  <section class="section-shell not-found">
+    <SectionHeading number="01" title="从这里继续" />
+    <div class="button-row"><a class="button" href="/">返回首页</a><a class="button button--ghost" href="/archive/">查看历史归档</a></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found { padding-top: 0; }
+</style>

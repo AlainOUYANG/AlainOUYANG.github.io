@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const recent = posts.slice(0, 6);
+---
+
+<BaseLayout title="文章" description="佐坤关于因果推断、算法实践、AI 应用与阅读思考的文章。">
+  <PageIntro eyebrow="Writing / 文章" title="写下可复用的方法与判断" description="围绕增量建模、实验评估、工程实践和 AI 应用，把零散经验整理成能够被检验和继续讨论的文字。" />
+
+  <section class="section-shell">
+    <SectionHeading number="01" title="最近整理" description="新站正在从历史内容中筛选长期有效的文章；全部旧文仍可在归档中访问。" />
+    {recent.length > 0 ? (
+      <div class="card-grid">
+        {recent.map((post, index) => (
+          <ArticleCard
+            span={index === 0 ? 'wide' : index === 1 ? 'medium' : 'small'}
+            eyebrow={post.data.category}
+            title={post.data.title}
+            description={post.data.description}
+            href={post.data.permalink}
+            meta={post.data.pubDate.toLocaleDateString('zh-CN')}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="writing-empty surface-card">
+        <span>Archive in progress</span>
+        <h3>旧文章正在迁移和重新编目</h3>
+        <p>不会把历史内容伪装成当前作品。迁移完成后，精选内容会出现在这里，其余文章进入历史归档。</p>
+      </div>
+    )}
+  </section>
+
+  <section class="section-shell writing-map">
+    <SectionHeading number="02" title="内容地图" />
+    <div class="writing-map__grid">
+      <a href="/topics/"><span>01</span><h3>方法与模型</h3><p>因果推断、Uplift Modeling、实验评估。</p></a>
+      <a href="/topics/"><span>02</span><h3>工程与实践</h3><p>从问题定义、建模到验证的可复用经验。</p></a>
+      <a href="/lab/"><span>03</span><h3>AI 与创造</h3><p>内容工作流、知识系统和个人效率工具。</p></a>
+      <a href="/archive/"><span>04</span><h3>历史归档</h3><p>保留旧站文章原貌，不代表当前观点与重点。</p></a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .writing-empty { max-width: 48rem; }
+  .writing-empty > span { color: var(--color-accent-soft); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+  .writing-empty h3 { max-width: 15ch; margin: 4rem 0 1rem; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 500; }
+  .writing-empty p { max-width: 35rem; color: var(--color-muted); }
+  .writing-map__grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--color-border); border-left: 1px solid var(--color-border); }
+  .writing-map__grid a { min-height: 15rem; padding: 1.5rem; text-decoration: none; border-right: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); transition: background 180ms ease; }
+  .writing-map__grid a:hover { color: var(--color-text); background: var(--color-surface-soft); }
+  .writing-map__grid span { color: var(--color-accent-soft); font-size: 0.68rem; font-weight: 800; }
+  .writing-map__grid h3 { margin: 3rem 0 0.75rem; font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; }
+  .writing-map__grid p { margin: 0; color: var(--color-muted); }
+  @media (max-width: 40rem) { .writing-map__grid { grid-template-columns: 1fr; } }
+</style>

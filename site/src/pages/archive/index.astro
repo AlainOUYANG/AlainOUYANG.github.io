@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="历史归档" description="佐坤旧站文章的完整历史归档。">
+  <PageIntro eyebrow="Archive / 历史归档" title="保留来路，但不让它定义现在" description="这里完整保留旧站文章和既有链接。历史内容可能不代表当前观点、工作背景或网站重点。" />
+
+  <section class="section-shell">
+    <SectionHeading number="01" title={`${posts.length} 篇历史文章`} description="按发布日期倒序排列。精选内容会在文章页重新编目，原文仍从这里访问。" />
+    {posts.length > 0 ? (
+      <ol class="archive-list">
+        {posts.map((post, index) => (
+          <li>
+            <span>{String(index + 1).padStart(3, '0')}</span>
+            <a href={post.data.permalink}>{post.data.title}</a>
+            <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('zh-CN')}</time>
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <div class="archive-empty surface-card"><h3>归档正在迁移</h3><p>迁移完成后，这里将显示旧站全部历史文章和原有访问路径。</p></div>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .archive-list { margin: 0; padding: 0; border-top: 1px solid var(--color-border); list-style: none; }
+  .archive-list li { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) auto; gap: 1rem; align-items: center; padding-block: 1rem; border-bottom: 1px solid var(--color-border); }
+  .archive-list li > span { color: var(--color-subtle); font-size: 0.62rem; letter-spacing: 0.12em; }
+  .archive-list a { font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.25rem); text-decoration: none; }
+  .archive-list time { color: var(--color-subtle); font-size: 0.69rem; white-space: nowrap; }
+  .archive-empty { max-width: 38rem; }
+  .archive-empty h3 { margin-bottom: 1rem; font-family: var(--font-display); font-size: 2rem; font-weight: 500; }
+  .archive-empty p { margin: 0; color: var(--color-muted); }
+  @media (max-width: 38rem) {
+    .archive-list li { grid-template-columns: 2.5rem minmax(0, 1fr); }
+    .archive-list time { grid-column: 2; }
+  }
+</style>
