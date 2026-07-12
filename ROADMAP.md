@@ -4,7 +4,7 @@
 
 以 `Kzyo` 为公开身份的暖白编辑型极简改版已合并到 `master` 并部署到 GitHub Pages，线上正式生效。除 Lighthouse Performance 因自托管文楷维持在 68（已确认接受）外，其余验收全部通过。旧 Jekyll 源暂不删除，作为回滚参考。
 
-每日简报独立子站（独立仓库 `AlainOUYANG/digest`）已上线 `https://alainouyang.github.io/digest/`，首期生成并通过验收，主站导航已加入口；每日 19 点定时尚未启用，等待用户确认。
+每日简报独立子站（独立仓库 `AlainOUYANG/digest`）已上线 `https://alainouyang.github.io/digest/`，首期通过验收，主站导航已加入口，每日北京时间 19 点定时生成已启用，进入全自动运行。
 
 ## 已完成
 
@@ -45,19 +45,19 @@
 - 2026-07-12：在独立仓库 `AlainOUYANG/digest` 实现简报子站：Astro 静态站（复用暖白 tokens）、三组源配置（92 个 AI 博客源、8 个因果营销源、23 位即刻用户）、自研抓取/评分/摘要/渲染流水线（22 个单测）、部署与每日生成两条工作流。
 - 2026-07-12：简报首期上线 `https://alainouyang.github.io/digest/`，LLM 采用火山方舟 `deepseek-v4-flash-260425`；修复进程挂死、空目录 ENOENT 与 favicon 404 三个问题。
 - 2026-07-12：主站导航新增「简报」入口（绝对 URL 指向子站），`verify:all` 七项契约通过后部署上线。
+- 2026-07-12：用户确认首期内容质量后，`digest.yml` 启用每日北京时间 19 点（UTC 11:00）cron，简报进入全自动运行。
 
 ## 进行中
 
 - 观察 Astro 生产站稳定性，旧 Jekyll 文件暂不删除。
-- 简报子站每日 19 点定时（cron）待用户确认首期内容质量后启用。
+- 观察简报子站每日定时运行的稳定性与内容质量。
 
 ## 待办
 
-1. 用户确认后在 `digest.yml` 启用每日 19 点 cron。
-2. 用户更换已在对话中泄露的方舟 API key 并更新 `ARK_API_KEY` secret。
-3. 持续整理因果推断、Uplift Modeling 与智能营销的精选文章。
-4. 为 AI 实验室补充可公开的项目链接和过程记录。
-5. Astro 生产站稳定运行一段时间且用户再次确认后，再决定是否删除旧 Jekyll 文件。
+1. 用户更换已在对话中泄露的方舟 API key 并更新 `ARK_API_KEY` secret。
+2. 持续整理因果推断、Uplift Modeling 与智能营销的精选文章。
+3. 为 AI 实验室补充可公开的项目链接和过程记录。
+4. Astro 生产站稳定运行一段时间且用户再次确认后，再决定是否删除旧 Jekyll 文件。
 
 ## 阻塞与待确认
 
