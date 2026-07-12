@@ -4,6 +4,8 @@
 
 以 `Kzyo` 为公开身份的暖白编辑型极简改版已合并到 `master` 并部署到 GitHub Pages，线上正式生效。除 Lighthouse Performance 因自托管文楷维持在 68（已确认接受）外，其余验收全部通过。旧 Jekyll 源暂不删除，作为回滚参考。
 
+每日简报独立子站（独立仓库 `AlainOUYANG/digest`）已上线 `https://alainouyang.github.io/digest/`，首期生成并通过验收，主站导航已加入口；每日 19 点定时尚未启用，等待用户确认。
+
 ## 已完成
 
 - 2026-07-10：审计当前仓库、线上主页、导航、内容集合、依赖与模板遗留内容。
@@ -39,16 +41,23 @@
 - 2026-07-11：在最终字体分层版本上完成 Playwright 桌面／移动复验与 Lighthouse 复验；Accessibility、Best Practices、SEO 三项达到 100，Performance 维持 68。
 - 2026-07-11：用户确认接受 Performance 68，保留已批准的自托管文楷字体策略，不为 Lighthouse 分数缩减文楷使用范围。
 - 2026-07-11：将 `codex/kzyo-editorial-redesign` fast-forward 合并到 `master` 并推送，Actions 运行 `29154376007` 的 build 与 deploy job 均成功，Kzyo 暖白编辑型版本正式上线。
+- 2026-07-12：完成每日简报子站设计规格与实施计划（`docs/superpowers/specs/2026-07-11-digest-subsite-design.md`）。
+- 2026-07-12：在独立仓库 `AlainOUYANG/digest` 实现简报子站：Astro 静态站（复用暖白 tokens）、三组源配置（92 个 AI 博客源、8 个因果营销源、23 位即刻用户）、自研抓取/评分/摘要/渲染流水线（22 个单测）、部署与每日生成两条工作流。
+- 2026-07-12：简报首期上线 `https://alainouyang.github.io/digest/`，LLM 采用火山方舟 `deepseek-v4-flash-260425`；修复进程挂死、空目录 ENOENT 与 favicon 404 三个问题。
+- 2026-07-12：主站导航新增「简报」入口（绝对 URL 指向子站），`verify:all` 七项契约通过后部署上线。
 
 ## 进行中
 
 - 观察 Astro 生产站稳定性，旧 Jekyll 文件暂不删除。
+- 简报子站每日 19 点定时（cron）待用户确认首期内容质量后启用。
 
 ## 待办
 
-1. 持续整理因果推断、Uplift Modeling 与智能营销的精选文章。
-2. 为 AI 实验室补充可公开的项目链接和过程记录。
-3. Astro 生产站稳定运行一段时间且用户再次确认后，再决定是否删除旧 Jekyll 文件。
+1. 用户确认后在 `digest.yml` 启用每日 19 点 cron。
+2. 用户更换已在对话中泄露的方舟 API key 并更新 `ARK_API_KEY` secret。
+3. 持续整理因果推断、Uplift Modeling 与智能营销的精选文章。
+4. 为 AI 实验室补充可公开的项目链接和过程记录。
+5. Astro 生产站稳定运行一段时间且用户再次确认后，再决定是否删除旧 Jekyll 文件。
 
 ## 阻塞与待确认
 
@@ -74,3 +83,6 @@
 - 2026-07-11：最终字体分层版本的 Playwright 复验（系统 Chrome，1440×900 与 390×844）覆盖首页、专题、文章、AI 实验室、研究、关于、归档及一篇代表性历史文章：横向溢出全为 0，控制台 0 error／0 warning，字体请求全部来自本地站点无第三方域名，首页无 canvas、计算字体族同时含 Source Sans 3 与 LXGW WenKai，移动导航可展开，标题桌面 72px／移动 50.7px；文章详情按需加载完整文楷。
 - 2026-07-11：最终 Lighthouse（首页，移动模拟）为 Accessibility 100、Best Practices 100、SEO 100、Performance 68；对比度修正使 Accessibility 从 95 升至 100。Performance 68 的根因是首屏加载约 667KB、14 个中文文楷分片：实测本地 FCP/LCP 约 82ms，模拟移动 4G 投影到约 5.1s。用户已确认接受，保留文楷字体策略。
 - 2026-07-11：上线后线上验收——首页显示 `Kzyo` 身份与新版首屏文案；首页、专题、文章、AI 实验室、研究、关于、归档、RSS、sitemap 均返回 HTTP 200；不存在路径返回自定义 HTTP 404。
+- 2026-07-12：简报子站 Actions 运行 `29192355344` 三个 job 全部成功，generate 用时 1m34s；首期含 AI 博客 8 条、因果营销 2 条、即刻 8 条，全部有中文摘要、作者署名与原文链接，13 个当日不可用源如实记录。
+- 2026-07-12：简报子站 Playwright 冒烟通过——桌面/移动 × 首页/归档/单期共 6 项，均 200、无横向溢出、控制台干净、条目署名与链接齐全。
+- 2026-07-12：主站加导航后 `verify:all` 七项契约通过，部署运行 `29192709524` 成功，线上导航出现「简报」入口。
