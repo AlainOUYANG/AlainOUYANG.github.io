@@ -1,6 +1,6 @@
 ---
 title: "《Using Machine Learning to Solve Real-World Problems》翻译"
-description: "date:       2019-06-19"
+description: "《Using Machine Learning to Solve Real-World Problems》翻译 本文是《Using Machine Learning to Sol…"
 pubDate: 2019-06-19
 permalink: "/using-machine-learning-to-solve-real-world-problems-翻译/"
 category: 历史归档

@@ -9,9 +9,20 @@ import { topics } from '../data/topics';
 import { labProjects } from '../data/lab';
 import { profile } from '../data/profile';
 
-const selectedPosts = (await getCollection('posts', ({ data }) => !data.draft))
+const selectedPosts = (await getCollection('posts', ({ data }) => !data.draft && data.featured))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 5);
+
+const statementWords = (() => {
+  const segments = [...new Intl.Segmenter('zh-Hans', { granularity: 'word' }).segment(profile.statement)];
+  const words: string[] = [];
+  for (const { segment, isWordLike } of segments) {
+    if (/^\s+$/.test(segment)) words.push(' ');
+    else if (isWordLike || words.length === 0 || words[words.length - 1] === ' ') words.push(segment);
+    else words[words.length - 1] += segment;
+  }
+  return words;
+})();
 
 const personJsonLd = {
   '@context': 'https://schema.org',
@@ -26,7 +37,7 @@ const personJsonLd = {
 <BaseLayout title="Kzyo" description="Kzyo 的个人网站：营销增长、因果推断、Uplift Modeling 与 AI 应用。" jsonLd={personJsonLd}>
   <section class="home-intro shell" data-home-intro>
     <p class="eyebrow">Kzyo · Growth / Causal / AI</p>
-    <h1>{profile.statement}</h1>
+    <h1>{statementWords.map((word) => (word === ' ' ? ' ' : <span>{word}</span>))}</h1>
     <p class="home-intro__summary">{profile.summary}</p>
     <nav aria-label="首页快捷入口">
       <a href="/writing/">阅读文章</a>
@@ -41,17 +52,28 @@ const personJsonLd = {
 
   <section class="section-shell">
     <SectionHeading number="02" title="最近写作" description="文章、研究笔记与未来的播客内容使用同一套内容索引。" />
-    <div>
-      {selectedPosts.map((post) => (
-        <ArticleCard
-          eyebrow={post.data.category}
-          title={post.data.title}
-          description={post.data.description}
-          href={post.data.permalink}
-          meta={post.data.pubDate.toLocaleDateString('zh-CN')}
-        />
-      ))}
-    </div>
+    {selectedPosts.length > 0 ? (
+      <div>
+        {selectedPosts.map((post) => (
+          <ArticleCard
+            eyebrow={post.data.category}
+            title={post.data.title}
+            description={post.data.description}
+            href={post.data.permalink}
+            meta={post.data.pubDate.toLocaleDateString('zh-CN')}
+          />
+        ))}
+      </div>
+    ) : (
+      <article class="research-row" data-editorial-row>
+        <span>Curating</span>
+        <div>
+          <h3><a href="/writing/">精选文章整理中</a></h3>
+          <p>正在围绕因果推断、Uplift Modeling 与智能营销整理方法文章；旧站全部文字保留在历史归档。</p>
+        </div>
+        <span class="research-row__arrow" aria-hidden="true">↗</span>
+      </article>
+    )}
     <p class="section-more"><a href="/writing/">查看全部文章 →</a></p>
   </section>
 
@@ -66,7 +88,7 @@ const personJsonLd = {
     <article class="research-row" data-editorial-row>
       <span>Research</span>
       <div><h3><a href="/research/">论文、博士研究与公开资料</a></h3><p>论文记录保留规范作者信息，站内其他区域统一使用 Kzyo。</p></div>
-      <a href="/research/" aria-label="查看研究资料">↗</a>
+      <span class="research-row__arrow" aria-hidden="true">↗</span>
     </article>
   </section>
 </BaseLayout>
@@ -78,12 +100,15 @@ const personJsonLd = {
   .home-intro nav { display: flex; flex-wrap: wrap; gap: 0.75rem 1.4rem; }
   .home-intro nav a, .section-more a { font-size: 0.84rem; font-weight: 600; }
   .section-more { margin: 1.25rem 0 0; text-align: right; }
-  .research-row { display: grid; grid-template-columns: 8rem minmax(0, 1fr) auto; gap: clamp(1rem, 4vw, 2.5rem); padding-block: 1.4rem; border-block: 1px solid var(--color-border); }
-  .research-row > span { color: var(--color-subtle); font-family: var(--font-latin); font-size: 0.7rem; text-transform: uppercase; }
+  .home-intro h1 span { display: inline-block; }
+  .research-row { position: relative; display: grid; grid-template-columns: 8rem minmax(0, 1fr) auto; gap: clamp(1rem, 4vw, 2.5rem); padding-block: 1.4rem; border-block: 1px solid var(--color-border); }
+  .research-row > span:first-child { color: var(--color-subtle); font-family: var(--font-latin); font-size: 0.7rem; text-transform: uppercase; }
   .research-row h3 { margin: 0 0 0.3rem; font-size: clamp(1.2rem, 2vw, 1.48rem); }
-  .research-row h3 a, .research-row > a { text-decoration: none; }
+  .research-row h3 a { text-decoration: none; }
+  .research-row h3 a::after { position: absolute; inset: 0; content: ''; }
   .research-row p { margin: 0; color: var(--color-muted); font-size: 0.92rem; }
-  .research-row > a { color: var(--color-subtle); }
+  .research-row__arrow { color: var(--color-subtle); font-family: var(--font-latin); }
+  .research-row:hover h3 a, .research-row:hover .research-row__arrow { color: var(--color-accent); }
   @media (max-width: 42rem) {
     .home-intro { min-height: auto; }
     .home-intro h1 { font-size: clamp(2.7rem, 13vw, 3.25rem); }

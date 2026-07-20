@@ -1,6 +1,6 @@
 ---
 title: "Python 字符串前面加 u, r, b 的含义"
-description: "date:       2019-01-14"
+description: "u/U：表示 unicode 字符串 不是仅仅是针对中文, 可以针对任何的字符串，代表是对字符串进行 unicode 编码。 一般英文字符在使用各种编码下, 基本都可以正常解析,…"
 pubDate: 2019-01-14
 permalink: "/转载-python-字符串前面加-u-r-b-的含义/"
 category: 历史归档

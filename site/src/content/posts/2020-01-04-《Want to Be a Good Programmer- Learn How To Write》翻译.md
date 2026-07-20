@@ -1,6 +1,6 @@
 ---
 title: "《Want to Be a Good Programmer? Learn How To Write》翻译"
-description: "date:       2020-01-04"
+description: "想成为一个好程序员？学学如何写作吧 本文是《Want to Be a Good Programmer? Learn How To Write》这篇文章的翻译版本，译者水平有限，若…"
 pubDate: 2020-01-04
 permalink: "/want-to-be-a-good-programmer-learn-how-to-write-翻译/"
 category: 历史归档

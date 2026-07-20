@@ -1,6 +1,6 @@
 ---
 title: "《These four “clean code” tips will dramatically improve your engineering team’s productivity》翻译"
-description: "date:       2020-01-17"
+description: "这四个「写出整洁代码」的技巧将大大提高你的工程团队的生产力 本文是《These four “clean code” tips will dramatically improve …"
 pubDate: 2020-01-17
 permalink: "/these-four-clean-code-tips-will-dramatically-improve-your-engineering-team-s-productivity-翻译/"
 category: 历史归档

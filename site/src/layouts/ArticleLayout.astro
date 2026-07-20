@@ -5,12 +5,16 @@ import BaseLayout from './BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
+type Neighbor = { title: string; permalink: string };
+
 type Props = {
   post: CollectionEntry<'posts'>;
   archive?: boolean;
+  prev?: Neighbor;
+  next?: Neighbor;
 };
 
-const { post, archive = false } = Astro.props;
+const { post, archive = false, prev, next } = Astro.props;
 const published = post.data.pubDate.toISOString();
 const articleJsonLd = {
   '@context': 'https://schema.org',
@@ -38,6 +42,20 @@ const articleJsonLd = {
   <article class="article-layout section-shell">
     <SectionHeading number="01" title="正文" />
     <div class="article-layout__body"><slot /></div>
+    {(prev || next) && (
+      <nav class="article-layout__pager" aria-label="相邻文章">
+        {prev ? (
+          <a href={prev.permalink} rel="prev"><span>← 上一篇</span><b>{prev.title}</b></a>
+        ) : (
+          <span></span>
+        )}
+        {next ? (
+          <a class="article-layout__pager-next" href={next.permalink} rel="next"><span>下一篇 →</span><b>{next.title}</b></a>
+        ) : (
+          <span></span>
+        )}
+      </nav>
+    )}
     <footer class="article-layout__footer">
       <span>{archive ? '历史归档' : post.data.category}</span>
       <a href={archive ? '/archive/' : '/writing/'}>{archive ? '返回历史归档' : '返回文章'} <b aria-hidden="true">↗</b></a>
@@ -65,7 +83,17 @@ const articleJsonLd = {
   .article-layout__body :global(table) { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; }
   .article-layout__body :global(th),
   .article-layout__body :global(td) { padding: 0.6rem; border: 1px solid var(--color-border); }
-  .article-layout__footer { display: flex; width: min(100%, var(--reading-width)); align-items: center; justify-content: space-between; gap: 1rem; margin: 5rem auto 0; padding-top: 1.25rem; color: var(--color-subtle); font-size: 0.74rem; border-top: 1px solid var(--color-border); }
+  .article-layout__pager { display: grid; grid-template-columns: 1fr 1fr; width: min(100%, var(--reading-width)); gap: 1.5rem; margin: 4rem auto 0; padding-top: 1.25rem; border-top: 1px solid var(--color-border); }
+  .article-layout__pager a { display: grid; gap: 0.3rem; text-decoration: none; }
+  .article-layout__pager a:hover b { color: var(--color-accent); }
+  .article-layout__pager span { color: var(--color-subtle); font-size: 0.74rem; }
+  .article-layout__pager b { font-weight: 400; font-size: 0.95rem; line-height: 1.5; }
+  .article-layout__pager-next { text-align: right; }
+  @media (max-width: 42rem) {
+    .article-layout__pager { grid-template-columns: 1fr; }
+    .article-layout__pager-next { text-align: left; }
+  }
+  .article-layout__footer { display: flex; width: min(100%, var(--reading-width)); align-items: center; justify-content: space-between; gap: 1rem; margin: 3rem auto 0; padding-top: 1.25rem; color: var(--color-subtle); font-size: 0.74rem; border-top: 1px solid var(--color-border); }
   .article-layout__footer a { color: var(--color-text); font-weight: 700; text-decoration: none; }
   .article-layout__footer b { color: var(--color-accent); }
 </style>

@@ -18,7 +18,7 @@
   --content-width: 64rem;
   --reading-width: 45rem;
   --gutter: clamp(1.1rem, 4vw, 2.5rem);
-  --section-space: clamp(4rem, 8vw, 7rem);
+  --section-space: clamp(3.25rem, 6vw, 5rem);
   --font-latin: "Source Sans 3 Variable";
   --font-cjk: "LXGW WenKai UI";
   --font-cjk-full: "LXGW WenKai";

@@ -3,16 +3,23 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts', ({ data }) => !data.draft && data.permalink.startsWith('/writing/'));
-  return posts.map((post) => ({
+  const posts = (await getCollection('posts', ({ data }) => !data.draft && data.permalink.startsWith('/writing/'))).sort(
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  );
+  return posts.map((post, index) => ({
     params: { id: post.data.permalink.replace(/^\/writing\/|\/$/g, '') },
-    props: { post }
+    props: {
+      post,
+      prev: index > 0 ? { title: posts[index - 1].data.title, permalink: posts[index - 1].data.permalink } : undefined,
+      next: index < posts.length - 1 ? { title: posts[index + 1].data.title, permalink: posts[index + 1].data.permalink } : undefined
+    }
   }));
 }
 
-type Props = { post: CollectionEntry<'posts'> };
-const { post } = Astro.props;
+type Neighbor = { title: string; permalink: string };
+type Props = { post: CollectionEntry<'posts'>; prev?: Neighbor; next?: Neighbor };
+const { post, prev, next } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<ArticleLayout {post}><Content /></ArticleLayout>
+<ArticleLayout {post} {prev} {next}><Content /></ArticleLayout>

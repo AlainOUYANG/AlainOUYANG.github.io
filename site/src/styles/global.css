@@ -218,7 +218,7 @@ a {
 @media (max-width: 44rem) {
   :root {
     --gutter: 1rem;
-    --section-space: 3.75rem;
+    --section-space: 3rem;
   }
 
   body {

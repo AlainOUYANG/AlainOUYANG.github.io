@@ -16,17 +16,19 @@ const { eyebrow = 'Article', title, description, href, meta } = Astro.props;
     <h3><a href={href}>{title}</a></h3>
     <p>{description}</p>
   </div>
-  <a class="article-row__action" href={href} aria-label={`阅读：${title}`}>↗</a>
+  <span class="article-row__action" aria-hidden="true">↗</span>
 </article>
 
 <style>
-  .article-row { display: grid; grid-template-columns: 8rem minmax(0, 1fr) auto; gap: clamp(1rem, 4vw, 2.5rem); padding-block: 1.35rem; border-top: 1px solid var(--color-border); }
+  .article-row { position: relative; display: grid; grid-template-columns: 8rem minmax(0, 1fr) auto; gap: clamp(1rem, 4vw, 2.5rem); padding-block: 1.35rem; border-top: 1px solid var(--color-border); }
   .article-row:last-child { border-bottom: 1px solid var(--color-border); }
   .article-row__meta { display: grid; align-content: start; gap: 0.25rem; color: var(--color-subtle); font-family: var(--font-latin); font-size: 0.69rem; letter-spacing: 0.04em; }
   h3 { margin: 0 0 0.3rem; font-size: clamp(1.2rem, 2vw, 1.48rem); }
   h3 a { text-decoration: none; }
+  h3 a::after { position: absolute; inset: 0; content: ''; }
   .article-row__content p { max-width: 40rem; margin: 0; color: var(--color-muted); font-size: 0.92rem; }
-  .article-row__action { color: var(--color-subtle); font-family: var(--font-latin); text-decoration: none; }
+  .article-row__action { color: var(--color-subtle); font-family: var(--font-latin); }
+  .article-row:hover h3 a, .article-row:hover .article-row__action { color: var(--color-accent); }
   @media (max-width: 42rem) {
     .article-row { grid-template-columns: 1fr auto; }
     .article-row__meta { grid-column: 1 / -1; display: flex; gap: 1rem; }

@@ -12,19 +12,21 @@ const { topic } = Astro.props;
     <p>{topic.description}</p>
     <ul>{topic.questions.map((question) => <li>{question}</li>)}</ul>
   </div>
-  <a class="topic-row__action" href="/topics/" aria-label={`进入专题：${topic.title}`}>↗</a>
+  <span class="topic-row__action" aria-hidden="true">↗</span>
 </article>
 
 <style>
-  .topic-row { display: grid; grid-template-columns: 7rem minmax(0, 1fr) auto; gap: clamp(1rem, 4vw, 2.5rem); padding-block: 1.5rem; border-top: 1px solid var(--color-border); }
+  .topic-row { position: relative; display: grid; grid-template-columns: 7rem minmax(0, 1fr) auto; gap: clamp(1rem, 4vw, 2.5rem); padding-block: 1.5rem; border-top: 1px solid var(--color-border); }
   .topic-row:last-child { border-bottom: 1px solid var(--color-border); }
   .topic-row__meta { margin: 0; color: var(--color-subtle); font-family: var(--font-latin); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
   h3 { margin: 0 0 0.35rem; font-size: clamp(1.25rem, 2vw, 1.55rem); }
   h3 a { text-decoration: none; }
+  h3 a::after { position: absolute; inset: 0; content: ''; }
   .topic-row__content > p { max-width: 38rem; margin-bottom: 0.7rem; color: var(--color-muted); }
   ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin: 0; padding: 0; color: var(--color-subtle); font-size: 0.78rem; list-style: none; }
   li::before { margin-right: 0.4rem; content: '—'; }
-  .topic-row__action { color: var(--color-subtle); font-family: var(--font-latin); text-decoration: none; }
+  .topic-row__action { color: var(--color-subtle); font-family: var(--font-latin); }
+  .topic-row:hover h3 a, .topic-row:hover .topic-row__action { color: var(--color-accent); }
   @media (max-width: 42rem) {
     .topic-row { grid-template-columns: 1fr auto; }
     .topic-row__meta { grid-column: 1 / -1; }
