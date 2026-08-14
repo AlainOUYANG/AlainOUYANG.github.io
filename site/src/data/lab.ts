@@ -1,11 +1,19 @@
 export type LabProject = {
   title: string;
   description: string;
-  status: '探索中' | '持续迭代';
+  status: '已开源' | '探索中' | '持续迭代';
   tags: readonly string[];
+  href?: string;
 };
 
 export const labProjects: readonly LabProject[] = [
+  {
+    title: 'Yet Another Alfred Translator',
+    description: '基于有道智云的 Alfred 5 中英互译 Workflow，支持多词性释义、发音与智能缓存，零第三方依赖。',
+    status: '已开源',
+    tags: ['Alfred', 'Python', 'Workflow'],
+    href: 'https://github.com/AlainOUYANG/YetAnotherAlfredTranslator'
+  },
   {
     title: 'AI 播客工作流',
     description: '探索从资料整理、脚本生成到音频制作的可复用内容工作流。',
